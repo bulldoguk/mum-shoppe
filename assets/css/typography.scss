@@ -29,7 +29,7 @@
   p.a {
     @apply p-1 bg-gray-300 hover:bg-yellow-400;
   }
-  div.addressForm input {
-    @apply: 'bg-gray-500';
+  outerlayout {
+    @apply container w-full;
   }
 }

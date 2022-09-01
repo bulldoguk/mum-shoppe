@@ -1,18 +1,16 @@
 <template>
-    <nav class="border-gray-200 bg-white px-2 py-2.5 dark:bg-gray-800 sm:px-4">
-      <div class="container mx-auto flex flex-wrap items-center justify-between">
-        <nuxt-link :to="'/'" class="flex items-center">
+  <div class="header">
+    <nav>
+      <div>
+        <nuxt-link :to="'/'" class="logo">
           <img
             src="~/assets/images/cookoffchampslogo.png"
-            class="mr-3 h-6 sm:h-9"
             alt="CookOffChamps logo"
           />
-          <span
-            class="self-center whitespace-nowrap text-xl font-semibold dark:text-white"
-            >CookOffChamps</span
+          <span>Mum Shoppe</span
           >
         </nuxt-link>
-        <div class="flex items-center md:order-2">
+        <div class="center">
           <HeaderUserIcon
             @userProfileClick="toggleUserMenu"
             ref="HeaderUserIcon"
@@ -25,7 +23,6 @@
           <button
             data-collapse-toggle="mobile-menu-2"
             type="button"
-            class="ml-1 inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
             aria-controls="mobile-menu-2"
             aria-expanded="false"
             @click="toggleMobileMenu"
@@ -65,43 +62,55 @@
           <ul
             class="mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium"
           >
-            <HeaderLink :link="'/'" :text="'Home'" @click.native="toggleMobileMenu" />
-            <HeaderLink :link="'/event/'" :text="'Events'" @click.native="toggleMobileMenu" />
-            <HeaderLink :link="'/team/'" :text="'Teams'" @click.native="toggleMobileMenu" />
+            <HeaderLink
+              :link="'/'"
+              :text="'Home'"
+              @click.native="toggleMobileMenu"
+            />
+            <HeaderLink
+              :link="'/event/'"
+              :text="'Events'"
+              @click.native="toggleMobileMenu"
+            />
+            <HeaderLink
+              :link="'/team/'"
+              :text="'Teams'"
+              @click.native="toggleMobileMenu"
+            />
           </ul>
         </div>
       </div>
     </nav>
-  </template>
-  
-  <script>
-  import { mapMutations } from 'vuex'
-  export default {
-    data() {
-      return {
-        showUserMenu: false,
-        showMobileMenu: false,
+  </div>
+</template>
+
+<script>
+import { mapMutations } from 'vuex'
+export default {
+  data() {
+    return {
+      showUserMenu: false,
+      showMobileMenu: false,
+    }
+  },
+  methods: {
+    ...mapMutations({
+      fireModal: 'MODAL_INIT',
+    }),
+    toggleUserMenu() {
+      if (this.$auth.loggedIn) {
+        this.showUserMenu = !this.showUserMenu
+      } else {
+        this.showUserMenu = false
+        this.fireModal('login')
       }
     },
-    methods: {
-      ...mapMutations({
-        fireModal: 'MODAL_INIT',
-      }),
-      toggleUserMenu() {
-        if (this.$auth.loggedIn) {
-          this.showUserMenu = !this.showUserMenu
-        } else {
-          this.showUserMenu = false
-          this.fireModal('login')
-        }
-      },
-      closeUserMenu() {
-        this.showUserMenu = false
-      },
-      toggleMobileMenu() {
-        this.showMobileMenu = !this.showMobileMenu
-      },
+    closeUserMenu() {
+      this.showUserMenu = false
     },
-  }
-  </script>
-  
+    toggleMobileMenu() {
+      this.showMobileMenu = !this.showMobileMenu
+    },
+  },
+}
+</script>
