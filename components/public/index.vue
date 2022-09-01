@@ -7,6 +7,9 @@
         :shoppe="shoppe"
       />
     </div>
+    <div v-else>
+      <Orderform :shoppe="selectedShoppe" />
+    </div>
   </div>
 </template>
 
@@ -23,6 +26,9 @@ export default defineComponent({
     isMainIndex() {
       return (this.$route.params.pathMatch.length === 0)
     },
+    selectedShoppe() {
+      return (this.$route.params.pathMatch)
+    }
   },
 })
 </script>
