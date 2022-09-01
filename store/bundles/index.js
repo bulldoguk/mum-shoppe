@@ -10,7 +10,7 @@ export default {
           description: '6.5" Flower with traditional loops',
           price: 70,
           credits: [
-            { optionid: 1, credits: 2 }
+            { optionid: 'section1', credits: 1, default: 'flowerback1' }
           ]
         },
         {
@@ -20,7 +20,6 @@ export default {
           description: '5.5" Flower with traditional loops',
           price: 67.5,
           credits: [
-            { optionid: 1, credits: 1 }
           ]
         },
         {
@@ -30,7 +29,6 @@ export default {
           description: '9.5" Flower with Sunburst points',
           price: 70,
           credits: [
-            { optionid: 1, credits: 2 }
           ]
         },
         {
@@ -40,7 +38,6 @@ export default {
           description: '6.5" Flower with Sunburst points',
           price: 67.5,
           credits: [
-            { optionid: 1, credits: 1 }
           ]
         },
         {
@@ -50,7 +47,6 @@ export default {
           description: '6.5" Flower with Points and Notch',
           price: 97.5,
           credits: [
-            { optionid: 1, credits: 2 }
           ]
         },
         {
@@ -60,7 +56,6 @@ export default {
           description: '4" Flower with Points and Notch',
           price: 80,
           credits: [
-            { optionid: 1, credits: 1 }
           ]
         },
         {
@@ -70,7 +65,6 @@ export default {
           description: '7.5" Flower with Trendy Loops',
           price: 113,
           credits: [
-            { optionid: 1, credits: 1 }
           ]
         },
         {
@@ -80,7 +74,6 @@ export default {
           description: '(4) 3.5" & (1) 7.5" flower with Boa',
           price: 135,
           credits: [
-            { optionid: 1, credits: 1 }
           ]
         },
         {
@@ -90,7 +83,6 @@ export default {
           description: '(4) 5.5" & (1) 9.5" flower with Boa',
           price: 160,
           credits: [
-            { optionid: 1, credits: 1 }
           ]
         },
       ]

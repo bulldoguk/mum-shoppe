@@ -1,18 +1,18 @@
 export default {
   state() {
     return {
-        shoppes: [
-          {
-            id: 0,
-            name: 'KHS Band Mum Shoppe',
-            school: 'Katy High School',
-            description: 'Ran by volunteers from the Band parents, all proceeds go to support the KHS Band and Color Guard',
-            contact: 'Shannon Bailey',
-            email: 'something@example.com',
-            url: 'www.khsband.org/mum-shoppe',
-            slug: 'khs-band-mum-shoppe'
-          }
-        ]
+      list: [
+        {
+          id: 'section1',
+          title: 'Flower Back Ribbons',
+          options: [
+            { id: 'flowerback1', name: 'Loops', price: 4 },
+            { id: 'flowerback2', name: 'Points & Notch', price: 5 },
+            { id: 'flowerback3', name: 'Sunbursts', price: 5 },
+            { id: 'flowerback4', name: 'Trendy Loops', price: 6 }
+          ]
+        },
+      ],
     }
   },
 }

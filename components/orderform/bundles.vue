@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="border-b-2">
     <h1>Pick your bundle</h1>
     <div v-for="(size, index) of sizes" :key="index">
       <h2 class="capitalize">{{ size }}</h2>
