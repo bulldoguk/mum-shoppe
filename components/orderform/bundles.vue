@@ -13,7 +13,9 @@
           >: {{ item.description }}
         </div>
         <div class="col-span-2 capitalize">{{ item.type }}</div>
-        <div class="col-span-2"><input type="checkbox" /></div>
+        <div class="col-span-2" @click="selectBundle(item.id)">
+          <SvgDynamicCheck :isChecked="isSelected(item.id)" />
+        </div>
         <div class="col-span-2"><UtilsCurrency :price="item.price" /></div>
       </div>
     </div>
@@ -22,7 +24,7 @@
 
 <script>
 import { defineComponent } from '@vue/composition-api'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default defineComponent({
   setup() {},
@@ -30,7 +32,13 @@ export default defineComponent({
     ...mapGetters({
       sizes: 'bundles/sizes',
       list: 'bundles/listBySize',
+      isSelected: 'bundles/isSelected'
     }),
   },
+  methods: {
+    ...mapMutations({
+      selectBundle: 'bundles/updateSelected'
+    })
+  }
 })
 </script>

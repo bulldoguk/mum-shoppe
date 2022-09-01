@@ -11,11 +11,11 @@
           >
         </nuxt-link>
         <div class="center">
-          <HeaderUserIcon
+          <TheHeaderUserIcon
             @userProfileClick="toggleUserMenu"
             ref="HeaderUserIcon"
           />
-          <HeaderUserMenu
+          <TheHeaderUserMenu
             v-if="showUserMenu"
             ref="HeaderUserMenu"
             @closeUserMenu="closeUserMenu"
@@ -62,17 +62,17 @@
           <ul
             class="mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium"
           >
-            <HeaderLink
+            <TheHeaderLink
               :link="'/'"
               :text="'Home'"
               @click.native="toggleMobileMenu"
             />
-            <HeaderLink
+            <TheHeaderLink
               :link="'/event/'"
               :text="'Events'"
               @click.native="toggleMobileMenu"
             />
-            <HeaderLink
+            <TheHeaderLink
               :link="'/team/'"
               :text="'Teams'"
               @click.native="toggleMobileMenu"

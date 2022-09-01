@@ -1,6 +1,7 @@
 export default {
   state() {
     return {
+      selected: 0,
       list: [
         {
           id: 1,
@@ -23,7 +24,7 @@ export default {
           ]
         },
         {
-          id: 1,
+          id: 3,
           type: 'mum',
           size: 'large single',
           description: '9.5" Flower with Sunburst points',
@@ -33,7 +34,7 @@ export default {
           ]
         },
         {
-          id: 2,
+          id: 4,
           type: 'garter',
           size: 'large single',
           description: '6.5" Flower with Sunburst points',
