@@ -42,7 +42,57 @@ export default {
           credits: [
             { optionid: 1, credits: 1 }
           ]
-        }
+        },
+        {
+          id: 5,
+          type: 'mum',
+          size: 'heart',
+          description: '6.5" Flower with Points and Notch',
+          price: 97.5,
+          credits: [
+            { optionid: 1, credits: 2 }
+          ]
+        },
+        {
+          id: 6,
+          type: 'garter',
+          size: 'heart',
+          description: '4" Flower with Points and Notch',
+          price: 80,
+          credits: [
+            { optionid: 1, credits: 1 }
+          ]
+        },
+        {
+          id: 7,
+          type: 'mum',
+          size: 'large heart',
+          description: '7.5" Flower with Trendy Loops',
+          price: 113,
+          credits: [
+            { optionid: 1, credits: 1 }
+          ]
+        },
+        {
+          id: 8,
+          type: 'mum',
+          size: 'paw',
+          description: '(4) 3.5" & (1) 7.5" flower with Boa',
+          price: 135,
+          credits: [
+            { optionid: 1, credits: 1 }
+          ]
+        },
+        {
+          id: 9,
+          type: 'mum',
+          size: 'large paw',
+          description: '(4) 5.5" & (1) 9.5" flower with Boa',
+          price: 160,
+          credits: [
+            { optionid: 1, credits: 1 }
+          ]
+        },
       ]
     }
   },

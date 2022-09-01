@@ -4,11 +4,11 @@
     <div v-for="(size, index) of sizes" :key="index">
       <h2 class="capitalize">{{ size }}</h2>
       <div
-        class="grid grid-cols-12"
+        class="grid grid-cols-12 mx-4"
         v-for="(item, index2) of list(size)"
         :key="index2"
       >
-        <div class="col-span-4">
+        <div class="col-span-6">
           <span class="capitalize">{{ item.type }}</span
           >: {{ item.description }}
         </div>
@@ -19,12 +19,14 @@
         <div class="col-span-2"><UtilsCurrency :price="item.price" /></div>
       </div>
     </div>
+    <div class="flex w-full justify-end"><UtilsCurrency :price="total" /></div>
   </div>
 </template>
 
 <script>
 import { defineComponent } from '@vue/composition-api'
 import { mapGetters, mapMutations } from 'vuex'
+import Currency from '../utils/currency.vue'
 
 export default defineComponent({
   setup() {},
@@ -32,13 +34,15 @@ export default defineComponent({
     ...mapGetters({
       sizes: 'bundles/sizes',
       list: 'bundles/listBySize',
-      isSelected: 'bundles/isSelected'
+      isSelected: 'bundles/isSelected',
+      total: 'bundles/getTotal',
     }),
   },
   methods: {
     ...mapMutations({
-      selectBundle: 'bundles/updateSelected'
-    })
-  }
+      selectBundle: 'bundles/updateSelected',
+    }),
+  },
+  components: { Currency },
 })
 </script>
