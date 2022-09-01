@@ -1,7 +1,6 @@
 export default {
   state() {
     return {
-      selected: 0,
       list: [
         {
           id: 1,

@@ -13,7 +13,7 @@
           >: {{ item.description }}
         </div>
         <div class="col-span-2 capitalize">{{ item.type }}</div>
-        <div class="col-span-2" @click="selectBundle(item.id)">
+        <div class="col-span-2" @click="selectBundle(item)">
           <SvgDynamicCheck :isChecked="isSelected(item.id)" />
         </div>
         <div class="col-span-2"><UtilsCurrency :price="item.price" /></div>
@@ -34,13 +34,13 @@ export default defineComponent({
     ...mapGetters({
       sizes: 'bundles/sizes',
       list: 'bundles/listBySize',
-      isSelected: 'bundles/isSelected',
-      total: 'bundles/getTotal',
+      isSelected: 'order/isSelected',
+      total: 'order/bundleTotal',
     }),
   },
   methods: {
     ...mapMutations({
-      selectBundle: 'bundles/updateSelected',
+      selectBundle: 'order/updateBundle',
     }),
   },
   components: { Currency },
