@@ -13,10 +13,23 @@
         <span class="capitalize">{{ item.name }}</span>
       </div>
       <div class="col-span-2 capitalize">{{ item.type }}</div>
-      <div class="col-span-2" @click="selectOption({ section: section.id, ...item })">
-        <SvgDynamicCheck :isChecked="checkOptions({ section: section.id, ...item })" />
+      <div
+        class="col-span-2"
+        @click="selectOption({ section: section.id, ...item })"
+      >
+        <SvgDynamicCheck
+          :isChecked="checkOptions({ section: section.id, ...item })"
+        />
       </div>
-      <div class="col-span-2"><UtilsCurrency :price="item.price" /></div>
+      <div class="col-span-2">
+        <UtilsCurrency
+          :price="isFree(item) ? 0 : item.price"
+          :showfree="true"
+        />
+      </div>
+    </div>
+    <div class="flex w-full justify-end">
+      <UtilsCurrency :price="subtotal" :showfree="true" />
     </div>
   </div>
 </template>
@@ -37,20 +50,42 @@ export default defineComponent({
     ...mapGetters({
       checkDefault: 'order/getDefault',
       credits: 'order/getCredits',
-      checkOptions: 'order/checkOptions'
+      checkOptions: 'order/checkOptions',
     }),
     creditCount() {
       return this.credits(this.section.id)
     },
+    selectedList() {
+      const mylist = [
+        ...this.section.options.filter((e) =>
+          this.checkOptions({ section: this.section.id, ...e })
+        ),
+      ]
+      mylist.sort((l, r) => (l.price < r.price ? 1 : -1)) // This gives them the most expensive item for free
+      return mylist
+    },
+    subtotal() {
+      let subtotal = 0
+      for (const item of this.selectedList) {
+        if (!this.isFree(item)) {
+          subtotal += item.price
+        }
+      }
+      return subtotal
+    },
   },
   methods: {
     ...mapMutations({
-      addOption: 'order/addOption'
+      selectOption: 'order/addOption',
     }),
-    selectOption (option) {
-      this.addOption(option)
-      console.log(option)
-    }
-  }
+    isFree(item) {
+      try {
+        const index = this.selectedList.findIndex((e) => e.id === item.id)
+        return index >= 0 && index + 1 <= this.creditCount
+      } catch {
+        return false
+      }
+    },
+  },
 })
 </script>
