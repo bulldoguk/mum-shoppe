@@ -11,15 +11,18 @@ export default {
     // Then check for # credits from bundle
     // Order the list so the most expensive get credits first
     // Then add up the rest
-    const sectionList =  [...new Set(state.options.map((item) => item.section))]
-    console.log('Unique sections', sectionList)
+    const sectionList = [...new Set(state.options.map((item) => item.section))]
     for (const section of sectionList) {
-      const itemList = [...state.options.filter(e => e.section === section)]
-      itemList.sort((l, r) => (l.price < r.price ? 1 : -1) )
-      console.log('items', itemList)
+      const itemList = [...state.options.filter((e) => e.section === section)]
+      itemList.sort((l, r) => (l.price < r.price ? 1 : -1))
       let idx = 1
-      const credits = state.bundle.credits.find(e => e.optionid === section).credits || 0
-      console.log('credits', credits)
+      let credits = 0
+      try {
+        credits =
+          state.bundle.credits.find((e) => e.optionid === section).credits || 0
+      } catch {
+        credits = 0
+      }
       for (const item of itemList) {
         if (idx > credits) {
           total += item.price

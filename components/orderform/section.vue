@@ -11,7 +11,7 @@
       v-for="(item, index2) of section.options"
       :key="index2"
     >
-      <div class="col-span-6">
+      <div class="col-span-5">
         <span
           class="capitalize"
           :class="checkDefault(section.id, item.id) ? 'text-gray-800' : ''"
@@ -34,9 +34,15 @@
           :showfree="true"
         />
       </div>
-    </div>
-    <div class="flex w-full justify-end">
-      <UtilsCurrency :price="subtotal" :showfree="true" />
+      <div class="col-span-1 flex w-full justify-end">
+        <UtilsCurrency
+          v-if="
+            selectedList.length > 0 && index2 === section.options.length - 1
+          "
+          :price="subtotal"
+          :showfree="true"
+        />
+      </div>
     </div>
   </div>
 </template>

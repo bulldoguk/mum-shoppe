@@ -8,7 +8,7 @@
         v-for="(item, index2) of list(size)"
         :key="index2"
       >
-        <div class="col-span-6">
+        <div class="col-span-5">
           <span class="capitalize">{{ item.type }}</span
           >: {{ item.description }}
         </div>
@@ -17,9 +17,15 @@
           <SvgDynamicCheck :isChecked="isSelected(item.id)" />
         </div>
         <div class="col-span-2"><UtilsCurrency :price="item.price" /></div>
+        <div class="col-span-1">&nbsp;</div>
       </div>
     </div>
-    <div class="flex w-full justify-end"><UtilsCurrency :price="total" /></div>
+    <div class="grid grid-cols-12 mx-4 px-4">
+      <div class="col-span-11">&nbsp;</div>
+      <div class="col-span-1 flex w-full justify-end">
+        <UtilsCurrency :price="total" />
+      </div>
+    </div>
   </div>
 </template>
 
