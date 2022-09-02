@@ -28,6 +28,7 @@ export default {
           description: '9.5" Flower with Sunburst points',
           price: 70,
           credits: [
+            { optionid: 'section1', credits: 1, default: 'flowerback3' }
           ]
         },
         {

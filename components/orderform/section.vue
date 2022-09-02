@@ -4,13 +4,19 @@
     <div
       class="grid grid-cols-12 mx-4 px-4"
       :class="
-        checkDefault(section.id, item.id) ? 'bg-yellow-200  rounded-lg' : ''
+        checkDefault(section.id, item.id)
+          ? 'bg-yellow-200 text-gray-800 rounded-lg'
+          : ''
       "
       v-for="(item, index2) of section.options"
       :key="index2"
     >
       <div class="col-span-6">
-        <span class="capitalize">{{ item.name }}</span>
+        <span
+          class="capitalize"
+          :class="checkDefault(section.id, item.id) ? 'text-gray-800' : ''"
+          >{{ item.name }}</span
+        >
       </div>
       <div class="col-span-2 capitalize">{{ item.type }}</div>
       <div
@@ -23,6 +29,7 @@
       </div>
       <div class="col-span-2">
         <UtilsCurrency
+          :useclass="checkDefault(section.id, item.id) ? 'text-gray-800' : ''"
           :price="isFree(item) ? 0 : item.price"
           :showfree="true"
         />

@@ -8,7 +8,6 @@
             alt="CookOffChamps logo"
           />
           <span>Mum Shoppe</span>
-          <TheHeaderTotal />
         </nuxt-link>
         <div class="center">
           <TheHeaderUserIcon
@@ -79,6 +78,7 @@
             />
           </ul>
         </div>
+        <div><TheHeaderTotal /></div>
       </div>
     </nav>
   </div>

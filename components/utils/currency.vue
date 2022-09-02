@@ -1,5 +1,5 @@
 <template>
-  <div>{{ formattedPrice }}</div>
+  <div :class="useclass">{{ formattedPrice }}</div>
 </template>
 
 <script>
@@ -16,6 +16,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    useclass: {
+      type: String,
+      default: ''
+    }
   },
   computed: {
     formattedPrice() {
