@@ -12,22 +12,4 @@ export default {
       return 0
     }
   },
-  getDefault: (state) => (sectionid) => {
-    try {
-      return state.list
-        .find((e) => e.id === state.selected)
-        .credits.find((e) => e.optionid === sectionid).default
-    } catch {
-      return false
-    }
-  },
-  getCredits: (state) => (sectionid) => {
-    try {
-      return state.list
-        .find((e) => e.id === state.selected)
-        .credits.find((e) => e.optionid === sectionid).credits
-    } catch {
-      return 0
-    }
-  },
 }
