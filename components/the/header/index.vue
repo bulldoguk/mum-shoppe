@@ -7,8 +7,8 @@
             src="~/assets/images/cookoffchampslogo.png"
             alt="CookOffChamps logo"
           />
-          <span>Mum Shoppe</span
-          >
+          <span>Mum Shoppe</span>
+          <TheHeaderTotal />
         </nuxt-link>
         <div class="center">
           <TheHeaderUserIcon
