@@ -1,12 +1,13 @@
 export default {
   state() {
-    return {}
+    return {
+    }
   },
   actions: {
-    nuxtServerInit({ commit }) {
+    async nuxtServerInit({ commit }) {
       // Pull list of available shoppes
       const uri = '/shoppes/list'
-      this.$api
+      await this.$api
         .get(uri)
         .then((resp) => {
           commit('shoppes/updateShopList', resp.data)
@@ -16,4 +17,6 @@ export default {
         })
     },
   },
+  mutations: {
+  }
 }

@@ -1,10 +1,10 @@
 export default {
   list(state) {
-    return state.shoppes
+    return state.shopList
   },
   getShoppeGuid: (state) => (slug) => {
     try {
-      return state.shoppes.find((e) => e.slug === slug).guid
+      return state.shopList.find((e) => e.slug === slug).guid
     } catch {
       return ''
     }
