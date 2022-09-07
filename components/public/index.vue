@@ -15,20 +15,27 @@
 
 <script>
 import { defineComponent } from '@vue/composition-api'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default defineComponent({
   setup() {},
+  fetch() {
+  },
   computed: {
     ...mapGetters({
       shoppeList: 'shoppes/list',
     }),
     isMainIndex() {
-      return (this.$route.params.pathMatch.length === 0)
+      return this.$route.params.pathMatch.length === 0
     },
     selectedShoppe() {
-      return (this.$route.params.pathMatch)
-    }
+      return this.$route.params.pathMatch
+    },
+  },
+  methods: {
+    ...mapMutations({
+      // addShoppes: 'shoppes/shoppesList',
+    }),
   },
 })
 </script>

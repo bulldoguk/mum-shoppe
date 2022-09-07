@@ -3,9 +3,9 @@
     <a @click="selectShoppe">
       <SvgOutlineMusicnote class="image"/>
       <div>
-        <h4>{{ shoppe.name }}</h4>
+        <h4>{{ shoppe.title }}</h4>
         <h5>{{ shoppe.school }}</h5>
-        <p>{{ shoppe.description }}</p>
+        <p>{{ shoppe.notes }}</p>
       </div>
     </a>
   </div>
