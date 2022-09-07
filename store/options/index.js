@@ -1,7 +1,8 @@
 export default {
   state() {
     return {
-      list: [
+      list: [],
+      old_list: [
         {
           id: 'section1',
           title: 'Flower Back Ribbons',

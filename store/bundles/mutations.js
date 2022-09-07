@@ -7,7 +7,6 @@ export default {
     }
   },
   SET_BUNDLES(state, bundles) {
-    console.log('Got bundles', bundles)
     state.list = bundles
   }
 }
