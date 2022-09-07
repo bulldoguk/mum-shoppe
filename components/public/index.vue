@@ -19,8 +19,6 @@ import { mapGetters, mapMutations } from 'vuex'
 
 export default defineComponent({
   setup() {},
-  fetch() {
-  },
   computed: {
     ...mapGetters({
       shoppeList: 'shoppes/list',

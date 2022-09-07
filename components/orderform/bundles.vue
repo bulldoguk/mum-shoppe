@@ -36,6 +36,14 @@ import Currency from '../utils/currency.vue'
 
 export default defineComponent({
   setup() {},
+  fetch() {
+    // Find the shoppe GUID
+    // From that GUID - prompt the bundles store to load
+    // That should then also load the store's sections
+  },
+  mounted() {
+    this.$store.dispatch('bundles/fetchBundles')
+  },
   computed: {
     ...mapGetters({
       sizes: 'bundles/sizes',

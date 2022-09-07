@@ -6,4 +6,8 @@ export default {
       state.selected = id
     }
   },
+  SET_BUNDLES(state, bundles) {
+    console.log('Got bundles', bundles)
+    state.list = bundles
+  }
 }
