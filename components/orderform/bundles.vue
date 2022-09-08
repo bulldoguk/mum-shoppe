@@ -14,7 +14,7 @@
         </div>
         <div class="col-span-2 capitalize">{{ item.type }}</div>
         <div class="col-span-2" @click="selectBundle(item)">
-          <SvgDynamicCheck :isChecked="isSelected(item.id)" />
+          <SvgDynamicCheck :isChecked="isSelected(item.guid)" />
         </div>
         <div class="col-span-2"><UtilsCurrency :price="item.price" /></div>
         <div class="col-span-1">&nbsp;</div>

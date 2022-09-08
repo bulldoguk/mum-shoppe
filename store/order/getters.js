@@ -1,6 +1,6 @@
 export default {
   isSelected: (state) => (checkid) => {
-    return state.bundle && state.bundle.id === checkid
+    return state.bundle && state.bundle.guid === checkid
   },
   bundleTotal(state) {
     return state.bundle ? state.bundle.price : 0
@@ -51,7 +51,7 @@ export default {
   },
   checkOptions: (state) => (option) => {
     const index = state.options.findIndex(
-      (e) => e.section === option.section && e.id === option.id
+      (e) => e.section === option.section && e.optionguid === option.optionguid
     )
     return index >= 0
   },

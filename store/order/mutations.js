@@ -1,6 +1,6 @@
 export default {
   updateBundle(state, bundle) {
-    if (state.bundle && state.bundle.id === bundle.id) {
+    if (state.bundle && state.bundle.guid === bundle.guid) {
       state.bundle = null
     } else {
       state.bundle = bundle
@@ -8,7 +8,7 @@ export default {
   },
   addOption(state, option) {
     const index = state.options.findIndex(
-      (e) => e.section === option.section && e.id === option.id
+      (e) => e.section === option.section && e.optionguid === option.optionguid
     )
     if (index >= 0) {
       state.options.splice(index, 1)
