@@ -14,22 +14,22 @@
       <div class="col-span-5">
         <span
           class="capitalize"
-          :class="checkDefault(section.id, item.id) ? 'text-gray-800' : ''"
+          :class="checkDefault(section.guid, item.guid) ? 'text-gray-800' : ''"
           >{{ item.name }}</span
         >
       </div>
       <div class="col-span-2 capitalize">{{ item.type }}</div>
       <div
         class="col-span-2"
-        @click="selectOption({ section: section.id, ...item })"
+        @click="selectOption({ section: section.guid, ...item })"
       >
         <SvgDynamicCheck
-          :isChecked="checkOptions({ section: section.id, ...item })"
+          :isChecked="checkOptions({ section: section.guid, ...item })"
         />
       </div>
       <div class="col-span-2">
         <UtilsCurrency
-          :useclass="checkDefault(section.id, item.id) ? 'text-gray-800' : ''"
+          :useclass="checkDefault(section.guid, item.optionguid) ? 'text-gray-800' : ''"
           :price="isFree(item) ? 0 : item.price"
           :showfree="true"
         />
@@ -66,12 +66,12 @@ export default defineComponent({
       checkOptions: 'order/checkOptions',
     }),
     creditCount() {
-      return this.credits(this.section.id)
+      return this.credits(this.section.guid)
     },
     selectedList() {
       const mylist = [
         ...this.section.options.filter((e) =>
-          this.checkOptions({ section: this.section.id, ...e })
+          this.checkOptions({ section: this.section.guid, ...e })
         ),
       ]
       mylist.sort((l, r) => (l.price < r.price ? 1 : -1)) // This gives them the most expensive item for free
@@ -93,7 +93,7 @@ export default defineComponent({
     }),
     isFree(item) {
       try {
-        const index = this.selectedList.findIndex((e) => e.id === item.id)
+        const index = this.selectedList.findIndex((e) => e.guid === item.guid)
         return index >= 0 && index + 1 <= this.creditCount
       } catch {
         return false
