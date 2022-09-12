@@ -2,7 +2,8 @@
   <div class="flex flex-col gap-4 justify-center">
     <AdminHeader @selectStore="selectStore" @loadBundles="loadBundles" />
     <AdminDetailStore :shoppe="selectedStore" v-if="showStoreDetail" />
-    <AdminBundles :bundlesList="bundlesList" :storeGuid="selectedStore.guid" @addBundle="addBundle" />
+    <AdminBundles :bundlesList="bundlesList" :storeGuid="selectedStore.guid" @addBundle="addBundle"
+      @deleteBundle="deleteBundle" />
   </div>
 </template>
 
@@ -10,7 +11,7 @@
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
-  setup() {},
+  setup() { },
   data() {
     return {
       selectedStore: {
@@ -60,6 +61,11 @@ export default defineComponent({
       const bundle = {}
       this.bundlesList.unshift(bundle)
     },
+    deleteBundle(guid) {
+      console.log('Deleting', guid)
+      const index = this.bundlesList.findIndex(e => e.guid === guid)
+      this.bundlesList.splice(index, 1)
+    }
   },
 })
 </script>
