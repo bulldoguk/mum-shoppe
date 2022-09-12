@@ -1,9 +1,14 @@
 <template>
     <div class="border-2 rounded-lg m-2 p-2">
         <div>
-            <div class="w-full flex">
-                <a class="mx-auto cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            <div class="w-full flex flex-row">
+                <a class="flex flex-row gap-4 mx-auto cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     @click="addBundle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 9V12M12 12V15M12 12H15M12 12H9M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                            stroke="#4A5568" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
                     Add
                 </a>
             </div>
@@ -15,7 +20,7 @@
                         <div class="relative z-0 mb-6 w-full group">
                             <input type="text" name="title" id="title"
                                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " required="" v-model="bundle.type" @input="dirty.push(bundle.guid)" />
+                                placeholder=" " required="" v-model="bundle.type" @input="makeDirty(bundle.guid)" />
                             <label for="title"
                                 class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Type</label>
                         </div>
@@ -24,7 +29,7 @@
                         <div class="relative z-0 mb-6 w-full group">
                             <input type="text" name="title" id="title"
                                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " required="" v-model="bundle.size" @input="dirty.push(bundle.guid)" />
+                                placeholder=" " required="" v-model="bundle.size" @input="makeDirty(bundle.guid)" />
                             <label for="title"
                                 class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Size</label>
                         </div>
@@ -33,7 +38,7 @@
                         <div class="relative z-0 mb-6 w-full group">
                             <input type="text" name="title" id="title"
                                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " required="" v-model="bundle.price" @input="dirty.push(bundle.guid)" />
+                                placeholder=" " required="" v-model="bundle.price" @input="makeDirty(bundle.guid)" />
                             <label for="title"
                                 class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Price</label>
                         </div>
@@ -42,7 +47,8 @@
                         <div class="relative z-0 mb-6 w-full group">
                             <input type="text" name="title" id="title"
                                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " required="" v-model="bundle.description" @input="dirty.push(bundle.guid)" />
+                                placeholder=" " required="" v-model="bundle.description"
+                                @input="makeDirty(bundle.guid)" />
                             <label for="title"
                                 class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Description</label>
                         </div>
@@ -98,6 +104,12 @@ export default defineComponent({
         }
     },
     methods: {
+        makeDirty(guid) {
+            const index = this.dirty.findIndex(e => e === guid)
+            if (index < 0) {
+                this.dirty.push(guid)
+            }
+        },
         addBundle() {
             const uri = '/bundles'
             const payload = {
@@ -133,6 +145,8 @@ export default defineComponent({
             this.$api.patch(uri, payload)
                 .then((resp) => {
                     this.$emit('updateBundle', resp.data)
+                    const index = this.dirty.findIndex(e => e === bundle.guid)
+                    this.dirty.splice(index, 1)
                 })
                 .catch((e) => {
                     console.log('Failed to update bundle', e)
