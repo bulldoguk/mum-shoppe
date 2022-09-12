@@ -139,9 +139,15 @@ export default defineComponent({
       },
     }
   },
+  mounted () {
+    Object.assign(this.newdata, this.shoppe)
+  },
   watch: {
-    shoppe() {
-      Object.assign(this.newdata, this.shoppe)
+    shoppe: {
+      handler (val) {
+        Object.assign(this.newdata, val)
+      },
+      deep: true
     },
   },
   methods: {

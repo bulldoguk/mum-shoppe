@@ -2,7 +2,11 @@
   <div>
     <div class="w-full">
       <form class="flex flex-row gap-4 justify-around">
-        <select v-model="selectedStore" @change="loadBundles">
+        <select
+          v-model="selectedStore"
+          @change="loadBundles"
+          class="dark:text-gray-700"
+        >
           <option
             v-for="(store, index) of selectStoreList"
             :key="index"
@@ -10,15 +14,6 @@
             :selected="!selectedStore && store.mode === 'new' ? 'selected' : ''"
           >
             {{ store.title }}
-          </option>
-        </select>
-        <select v-model="selectedBundle">
-          <option
-            v-for="(bundle, index) of bundlesList"
-            :key="index"
-            :value="bundle"
-          >
-            {{ bundle.size }}: {{ bundle.type }}
           </option>
         </select>
       </form>
@@ -35,9 +30,6 @@ export default defineComponent({
   data() {
     return {
       selectedStore: { guid: '', title: 'Select store', mode: 'select' },
-      selectedBundle: { guid: '' },
-      bundlesList: [],
-      optionsList: [],
     }
   },
   computed: {
@@ -53,26 +45,9 @@ export default defineComponent({
     },
   },
   methods: {
-    loadBundles() {
-      if (this.selectedStore.mode !== 'select') {
-        this.$emit('selectStore', this.selectedStore)
-        // Pulls all the bundles for the current store
-        if (this.selectedStore.guid) {
-          const uri = `bundles/list/${this.selectedStore.guid}`
-          this.$api
-            .get(uri)
-            .then((resp) => {
-              this.bundlesList = [...resp.data]
-            })
-            .catch((e) => {
-              console.log('Failed to get bundles', e)
-            })
-        }
-      } else {
-        this.bundlesList = []
-        this.optionsList = []
-      }
-    },
+    loadBundles(event) {
+      this.$emit('loadBundles', { ...event.target.selectedOptions[0]._value })
+    }
   },
 })
 </script>
