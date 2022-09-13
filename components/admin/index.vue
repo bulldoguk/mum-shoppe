@@ -4,6 +4,8 @@
     <AdminDetailStore :shoppe="selectedStore" v-if="showStoreDetail" />
     <AdminBundles :bundlesList="bundlesList" :storeGuid="selectedStore.guid" @addBundle="addBundle"
       @deleteBundle="deleteBundle" />
+    <AdminOptions :optionsList="optionsList" :storeGuid="selectedStore.guid" @addOption="addOption"
+      @deleteOption="deleteOption" />
   </div>
 </template>
 
@@ -19,6 +21,7 @@ export default defineComponent({
         mode: '',
       },
       bundlesList: [],
+      optionsList: []
     }
   },
   computed: {
@@ -51,6 +54,15 @@ export default defineComponent({
             .catch((e) => {
               console.log('Failed to get bundles', e)
             })
+          // Also going to pull options at the same time - no need to async this
+          const optionsUri = `options/list/${this.selectedStore.guid}`
+          this.$api.get(optionsUri)
+            .then((resp) => {
+              this.optionsList = [...resp.data]
+            })
+            .catch((e) => {
+              console.log('Failed to get options', e)
+            })
         }
       } else {
         this.bundlesList = []
@@ -59,12 +71,22 @@ export default defineComponent({
     },
     addBundle(event) {
       const bundle = {}
+      Object.assign(bundle, event)
       this.bundlesList.unshift(bundle)
     },
     deleteBundle(guid) {
       console.log('Deleting', guid)
       const index = this.bundlesList.findIndex(e => e.guid === guid)
       this.bundlesList.splice(index, 1)
+    },
+    addOption(event) {
+      const option = {}
+      Object.assign(option, event)
+      this.optionsList.unshift(option)
+    },
+    deleteOption(guid) {
+      const index = this.optionsList.findIndex(e => e.guid === guid)
+      this.optionsList.splice(index, 1)
     }
   },
 })
