@@ -113,9 +113,9 @@ export default defineComponent({
     computed: {
         sortedBundlesList() {
             return this.bundlesList.sort((l, r) => {
-                if (l.position > r.position) return 1
-                if (l.position === r.position) return 0
-                if (l.position < r.position) return -1
+                if (parseInt(l.position) > parseInt(r.position)) return 1
+                if (parseInt(l.position) === parseInt(r.position)) return 0
+                if (parseInt(l.position) < parseInt(r.position)) return -1
             })
         }
     },
