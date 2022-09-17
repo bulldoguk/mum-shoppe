@@ -1,6 +1,13 @@
 export default {
   sizes(state) {
-    return [...new Set(state.list.map((item) => item.size))]
+    const ourList = [...state.list]
+    ourList.sort((l, r) => {
+      if (l.position > r.position) { return 1 }
+      if (l.position === r.position) { return 0 }
+      if (l.position < r.position) { return -1 }
+    })
+    // return [...new Set(state.list.map((item) => item.size))]
+    return [...new Set(ourList.map((item) => item.size))]
   },
   listBySize: (state) => (size) => {
     return state.list.filter((e) => e.size === size)
