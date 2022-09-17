@@ -2,10 +2,19 @@
   <div class="flex flex-col gap-4 justify-center">
     <AdminHeader @selectStore="selectStore" @loadBundles="loadBundles" />
     <AdminDetailStore :shoppe="selectedStore" v-if="showStoreDetail" />
-    <AdminBundles :bundlesList="bundlesList" :storeGuid="selectedStore.guid" @addBundle="addBundle"
-      @deleteBundle="deleteBundle" />
-    <AdminOptions :optionsList="optionsList" :storeGuid="selectedStore.guid" @addOption="addOption"
-      @deleteOption="deleteOption" />
+    <AdminBundles
+      :bundlesList="bundlesList"
+      :storeGuid="selectedStore.guid"
+      :optionsList="optionsList"
+      @addBundle="addBundle"
+      @deleteBundle="deleteBundle"
+    />
+    <AdminOptions
+      :optionsList="optionsList"
+      :storeGuid="selectedStore.guid"
+      @addOption="addOption"
+      @deleteOption="deleteOption"
+    />
   </div>
 </template>
 
@@ -13,7 +22,7 @@
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
-  setup() { },
+  setup() {},
   data() {
     return {
       selectedStore: {
@@ -21,7 +30,7 @@ export default defineComponent({
         mode: '',
       },
       bundlesList: [],
-      optionsList: []
+      optionsList: [],
     }
   },
   computed: {
@@ -56,7 +65,8 @@ export default defineComponent({
             })
           // Also going to pull options at the same time - no need to async this
           const optionsUri = `options/list/${this.selectedStore.guid}`
-          this.$api.get(optionsUri)
+          this.$api
+            .get(optionsUri)
             .then((resp) => {
               this.optionsList = [...resp.data]
             })
@@ -76,7 +86,7 @@ export default defineComponent({
     },
     deleteBundle(guid) {
       console.log('Deleting', guid)
-      const index = this.bundlesList.findIndex(e => e.guid === guid)
+      const index = this.bundlesList.findIndex((e) => e.guid === guid)
       this.bundlesList.splice(index, 1)
     },
     addOption(event) {
@@ -85,9 +95,9 @@ export default defineComponent({
       this.optionsList.unshift(option)
     },
     deleteOption(guid) {
-      const index = this.optionsList.findIndex(e => e.guid === guid)
+      const index = this.optionsList.findIndex((e) => e.guid === guid)
       this.optionsList.splice(index, 1)
-    }
+    },
   },
 })
 </script>

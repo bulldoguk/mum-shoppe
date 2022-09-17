@@ -4,7 +4,7 @@
     <div
       class="grid grid-cols-12 mx-4 px-4"
       :class="
-        checkDefault(section.id, item.id)
+        checkDefault(section.guid, item.optionguid)
           ? 'bg-yellow-200 text-gray-800 rounded-lg'
           : ''
       "
@@ -14,7 +14,7 @@
       <div class="col-span-5">
         <span
           class="capitalize"
-          :class="checkDefault(section.guid, item.guid) ? 'text-gray-800' : ''"
+          :class="checkDefault(section.guid, item.optionguid) ? 'text-gray-800' : ''"
           >{{ item.name }}</span
         >
       </div>
@@ -93,7 +93,7 @@ export default defineComponent({
     }),
     isFree(item) {
       try {
-        const index = this.selectedList.findIndex((e) => e.guid === item.guid)
+        const index = this.selectedList.findIndex((e) => e.optionguid === item.optionguid)
         return index >= 0 && index + 1 <= this.creditCount
       } catch {
         return false

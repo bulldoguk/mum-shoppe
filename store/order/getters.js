@@ -35,7 +35,7 @@ export default {
   getDefault: (state) => (sectionid, itemid) => {
     try {
       return (
-        state.bundle.credits.find((e) => e.optionid === sectionid).default ===
+        state.bundle.credits.find((e) => e.sectionguid === sectionid).default ===
         itemid
       )
     } catch {
@@ -44,7 +44,7 @@ export default {
   },
   getCredits: (state) => (sectionid) => {
     try {
-      return state.bundle.credits.find((e) => e.optionid === sectionid).credits
+      return state.bundle.credits.find((e) => e.sectionguid === sectionid).credits
     } catch {
       return 0
     }
