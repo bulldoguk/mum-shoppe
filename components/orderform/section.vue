@@ -1,6 +1,11 @@
 <template>
   <div class="border-b-2">
-    <h1 class="capitalize">{{ section.title }}</h1>
+    <div class="flex flex-row justify-between">
+      <div>
+        <h1 class="capitalize">{{ section.title }}</h1>
+      </div>
+      <div class="text-xs">({{ creditCount }}) credits</div>
+    </div>
     <div
       class="grid grid-cols-12 mx-4 px-4"
       :class="
@@ -14,7 +19,9 @@
       <div class="col-span-5">
         <span
           class="capitalize"
-          :class="checkDefault(section.guid, item.optionguid) ? 'text-gray-800' : ''"
+          :class="
+            checkDefault(section.guid, item.optionguid) ? 'text-gray-800' : ''
+          "
           >{{ item.name }}</span
         >
       </div>
@@ -29,7 +36,9 @@
       </div>
       <div class="col-span-2">
         <UtilsCurrency
-          :useclass="checkDefault(section.guid, item.optionguid) ? 'text-gray-800' : ''"
+          :useclass="
+            checkDefault(section.guid, item.optionguid) ? 'text-gray-800' : ''
+          "
           :price="isFree(item) ? 0 : item.price"
           :showfree="true"
         />
@@ -93,7 +102,9 @@ export default defineComponent({
     }),
     isFree(item) {
       try {
-        const index = this.selectedList.findIndex((e) => e.optionguid === item.optionguid)
+        const index = this.selectedList.findIndex(
+          (e) => e.optionguid === item.optionguid
+        )
         return index >= 0 && index + 1 <= this.creditCount
       } catch {
         return false

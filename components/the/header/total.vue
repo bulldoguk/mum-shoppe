@@ -1,5 +1,6 @@
 <template>
-  <div v-if="runningTotal > 0">
+  <div class="flex flex-row justify-end" v-if="runningTotal > 0">
+    <div>Subtotal:&nbsp;</div>
     <UtilsCurrency :price="runningTotal" />
   </div>
 </template>

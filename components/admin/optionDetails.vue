@@ -49,7 +49,7 @@
                     <div>
                         <div class="relative z-0 mb-6 w-full group">
                             <div class="flex flex-row justify-around">
-                                <div class="cursor-pointer" @click="deleteOption(optionDetail)">
+                                <div class="cursor-pointer" @click="deleteDetail(optionDetail, option.guid)">
                                     Delete
                                 </div>
                             </div>
@@ -98,9 +98,13 @@ export default {
             }
             this.$emit('addOptionDetail', payload)
         },
-        deleteDetail(guid) {
-            this.$emit('deleteOptionDetail', guid)
-        },
+        deleteDetail(detail, guid) {
+            const payload = {
+                optionGuid: detail.optionguid,
+                parentGuid: guid
+            }
+            this.$emit('deleteOptionDetail', payload)
+        }
     },
 }
 </script>

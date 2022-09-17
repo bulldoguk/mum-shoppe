@@ -1,5 +1,6 @@
 @layer components {
   .header {
+    @apply sticky top-0 z-50;
     nav {
       @apply w-full border-gray-200 bg-white px-2 py-2.5 dark:bg-gray-800 sm:px-4;
       div {
