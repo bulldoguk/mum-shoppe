@@ -58,10 +58,16 @@
                                     <div class="cursor-pointer" @click="saveOption(option)"
                                         v-if="dirty.includes(option.guid)">Save</div>
                                     <div class="cursor-pointer" @click="deleteOption(option.guid)">Delete</div>
+                                    <div class="cursor-pointer" @click="toggleDetails(option.guid)">Details</div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <AdminOptionDetails v-if="showDetails === option.guid" :option="option" 
+                    @makeDirtyOptionDetail="makeDirtyOptionDetail" 
+                    @addOptionDetail="addOptionDetail"
+                    @deleteOptionDetail="deleteOptionDetail"
+                    />
                 </form>
             </div>
         </div>
@@ -88,7 +94,8 @@ export default defineComponent({
     data() {
         return {
             dirty: [],
-            showOptions: false
+            showOptions: false,
+            showDetails: ''
         }
     },
     computed: {
@@ -101,6 +108,26 @@ export default defineComponent({
         }
     },
     methods: {
+        makeDirtyOptionDetail(guid) {
+            this.makeDirty(guid)
+        },
+        deleteOptionDetail(payload) {
+            console.log('Deleting', payload)
+        },
+        addOptionDetail(payload) {
+            console.log('Adding detail', payload)
+            const index = this.optionsList.findIndex(e => e.guid === payload.parentGuid)
+            this.makeDirty(payload.parentGuid)
+            delete payload.parentGuid
+            this.optionsList[index].options.unshift(payload)
+        },
+        toggleDetails(guid) {
+            if (this.showDetails === guid) { 
+                this.showDetails = '' 
+            } else {
+                this.showDetails = guid
+            }
+        },
         makeDirty(guid) {
             const index = this.dirty.findIndex(e => e === guid)
             if (index < 0) {

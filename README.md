@@ -1,5 +1,9 @@
 # mum-shoppe
 
+## How to fire it up
+* cd into the project folder
+* `npm run dev` fires up the localhost version
+
 ## Build Setup
 
 ```bash
