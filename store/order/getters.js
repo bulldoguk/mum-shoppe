@@ -2,6 +2,16 @@ export default {
   isSelected: (state) => (checkid) => {
     return state.bundle && state.bundle.guid === checkid
   },
+  hasSelected(state) {
+    if (state.bundle) {
+      return true
+    } else {
+      return false
+    }
+  },
+  selectedBundle(state) {
+    return state.bundle
+  },
   bundleTotal(state) {
     return state.bundle ? state.bundle.price : 0
   },
@@ -35,8 +45,8 @@ export default {
   getDefault: (state) => (sectionid, itemid) => {
     try {
       return (
-        state.bundle.credits.find((e) => e.sectionguid === sectionid).default ===
-        itemid
+        state.bundle.credits.find((e) => e.sectionguid === sectionid)
+          .default === itemid
       )
     } catch {
       return false
@@ -44,7 +54,8 @@ export default {
   },
   getCredits: (state) => (sectionid) => {
     try {
-      return state.bundle.credits.find((e) => e.sectionguid === sectionid).credits
+      return state.bundle.credits.find((e) => e.sectionguid === sectionid)
+        .credits
     } catch {
       return 0
     }

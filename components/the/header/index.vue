@@ -9,6 +9,9 @@
           />
           <span>Mum Shoppe</span>
         </nuxt-link>
+        <nuxt-link :to="'/admin'">
+          Admin
+        </nuxt-link>
         <div><TheHeaderTotal /></div>
       </div>
     </nav>

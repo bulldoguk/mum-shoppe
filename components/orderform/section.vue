@@ -4,7 +4,7 @@
       <div>
         <h1 class="capitalize">{{ section.title }}</h1>
       </div>
-      <div class="text-xs">({{ creditCount }}) credits</div>
+      <div class="text-xs">({{ remainingCreditCount }}) credits</div>
     </div>
     <div
       class="grid grid-cols-12 mx-4 px-4"
@@ -76,6 +76,10 @@ export default defineComponent({
     }),
     creditCount() {
       return this.credits(this.section.guid)
+    },
+    remainingCreditCount() {
+      const count = this.credits(this.section.guid) - this.selectedList.length
+      return count > 0 ? count : 0
     },
     selectedList() {
       const mylist = [
