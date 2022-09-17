@@ -66,4 +66,11 @@ export default {
     )
     return index >= 0
   },
+  getCustomerDetails: (state) => (key) => {
+    try {
+      return state.customer(key)
+    } catch {
+      return ''
+    }
+  },
 }

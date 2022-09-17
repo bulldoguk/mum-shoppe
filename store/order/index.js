@@ -1,7 +1,7 @@
 export default {
   state() {
     return {
-      customer: null,
+      customer: {},
       bundle: null,
       options: []
     }

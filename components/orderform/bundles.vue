@@ -11,7 +11,7 @@
         <div class="col-span-2" @click="selectBundle(selectedBundle)">
           <SvgDynamicCheck :isChecked="isSelected(selectedBundle.guid)" />
         </div>
-        <div class="col-span-2"><UtilsCurrency :price="selectedBundle.price" /></div>
+        <div class="col-span-2">&nbsp;</div>
         <div class="col-span-1 flex w-full justify-end">
           <UtilsCurrency :price="total" />
         </div>

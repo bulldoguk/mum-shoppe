@@ -1,5 +1,6 @@
 <template>
   <div>
+    <OrderformCustomer />
     <OrderformBundles />
     <OrderformSection
       v-for="section of options"

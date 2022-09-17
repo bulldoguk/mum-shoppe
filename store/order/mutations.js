@@ -16,4 +16,7 @@ export default {
       state.options.push(option)
     }
   },
+  updateCustomer(state, object) {
+    state.customer[object.key] = object.value
+  }
 }
