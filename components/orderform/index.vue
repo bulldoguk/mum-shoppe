@@ -2,6 +2,7 @@
   <div>
     <OrderformCustomer />
     <OrderformBundles />
+    <RibbonNames />
     <OrderformSection
       v-for="section of options"
       :key="section.id"
@@ -13,27 +14,29 @@
 <script>
 import { defineComponent } from '@vue/composition-api'
 import { mapGetters, mapMutations } from 'vuex'
+import RibbonNames from './ribbonNames.vue'
 
 export default defineComponent({
-  setup() {},
-  mounted() {},
-  computed: {
-    ...mapGetters({
-      options: 'options/list',
-      shoppeGuid: 'shoppes/getShoppeGuid',
-    }),
-    shopSlug() {
-      const parts = this.$route.params.pathMatch.split('/')
-      return parts[0]
+    setup() { },
+    mounted() { },
+    computed: {
+        ...mapGetters({
+            options: "options/list",
+            shoppeGuid: "shoppes/getShoppeGuid",
+        }),
+        shopSlug() {
+            const parts = this.$route.params.pathMatch.split("/");
+            return parts[0];
+        },
+        thisShoppeGuid() {
+            return this.shoppeGuid(this.shopSlug);
+        },
     },
-    thisShoppeGuid() {
-      return this.shoppeGuid(this.shopSlug)
+    methods: {
+        ...mapMutations({
+        // addShoppes: 'shoppes/shoppesList',
+        }),
     },
-  },
-  methods: {
-    ...mapMutations({
-      // addShoppes: 'shoppes/shoppesList',
-    }),
-  },
+    components: { RibbonNames }
 })
 </script>

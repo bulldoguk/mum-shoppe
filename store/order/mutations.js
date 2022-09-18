@@ -18,5 +18,8 @@ export default {
   },
   updateCustomer(state, object) {
     state.customer[object.key] = object.value
+  },
+  updateRibbonNames(state, object) {
+    state.ribbonNames[object.key] = object.value
   }
 }

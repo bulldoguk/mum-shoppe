@@ -73,4 +73,11 @@ export default {
       return ''
     }
   },
+  getRibbonNames: (state) => (key) => {
+    try {
+      return state.ribbonNames(key)
+    } catch {
+      return ''
+    }
+  },
 }
