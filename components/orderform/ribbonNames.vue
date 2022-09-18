@@ -194,6 +194,54 @@ export default defineComponent({
         this.setRibbonName({ key: 'ribbonName2', value: newVal })
       },
     },
+    grade1: {
+      get() {
+        return this.ribbonNames['grade1']
+      },
+      set(newVal) {
+        this.setRibbonName({ key: 'grade1', value: newVal })
+      },
+    },
+    grade2: {
+      get() {
+        return this.ribbonNames['grade2']
+      },
+      set(newVal) {
+        this.setRibbonName({ key: 'grade2', value: newVal })
+      },
+    },
+    activity1: {
+      get() {
+        return this.ribbonNames['activity1']
+      },
+      set(newVal) {
+        this.setRibbonName({ key: 'activity1', value: newVal })
+      },
+    },
+    activity2: {
+      get() {
+        return this.ribbonNames['activity2']
+      },
+      set(newVal) {
+        this.setRibbonName({ key: 'activity2', value: newVal })
+      },
+    },
+    school1: {
+      get() {
+        return this.ribbonNames['school1']
+      },
+      set(newVal) {
+        this.setRibbonName({ key: 'school1', value: newVal })
+      },
+    },
+    school2: {
+      get() {
+        return this.ribbonNames['school2']
+      },
+      set(newVal) {
+        this.setRibbonName({ key: 'school2', value: newVal })
+      },
+    },
   },
   methods: {
     ...mapMutations({

@@ -1,9 +1,10 @@
 <template>
-  <div>
-    <OrderformCustomer />
-    <OrderformBundles />
+  <div class="orderform">
+    <Customer />
     <RibbonNames />
-    <OrderformSection
+    <Instructions />
+    <Bundles />
+    <Section
       v-for="section of options"
       :key="section.id"
       :section="section"
@@ -15,6 +16,10 @@
 import { defineComponent } from '@vue/composition-api'
 import { mapGetters, mapMutations } from 'vuex'
 import RibbonNames from './ribbonNames.vue'
+import Instructions from './instructions.vue';
+import Customer from './customer.vue';
+import Bundles from './bundles.vue';
+import Section from './section.vue';
 
 export default defineComponent({
     setup() { },
@@ -37,6 +42,6 @@ export default defineComponent({
         // addShoppes: 'shoppes/shoppesList',
         }),
     },
-    components: { RibbonNames }
+    components: { RibbonNames, Instructions, Customer, Bundles, Section }
 })
 </script>
