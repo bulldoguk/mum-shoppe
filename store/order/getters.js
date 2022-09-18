@@ -29,7 +29,7 @@ export default {
       let credits = 0
       try {
         credits =
-          state.bundle.credits.find((e) => e.optionid === section).credits || 0
+          state.bundle.credits.find((e) => e.sectionguid === section).credits || 0
       } catch {
         credits = 0
       }

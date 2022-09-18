@@ -3,6 +3,7 @@
     <div class="flex flex-row justify-between">
       <div>
         <h1 class="capitalize">{{ section.title }}</h1>
+        <div class="hidden">{{ section.guid }}</div>
       </div>
       <div class="text-xs">({{ remainingCreditCount }}) credits</div>
     </div>

@@ -7,7 +7,7 @@
           <span class="capitalize">{{ selectedBundle.type }}</span
           >: {{ selectedBundle.description }}
         </div>
-        <div class="col-span-2 capitalize">{{ selectedBundle.type }}</div>
+        <div class="col-span-2 capitalize">{{ selectedBundle.size }}</div>
         <div class="col-span-2" @click="selectBundle(selectedBundle)">
           <SvgDynamicCheck :isChecked="isSelected(selectedBundle.guid)" />
         </div>
@@ -26,12 +26,11 @@
           v-for="(item, index2) of list(size)"
           :key="index2"
         >
-          <div class="col-span-5">
+          <div class="col-span-8">
             <span class="capitalize">{{ item.type }}</span
             >: {{ item.description }}
           </div>
-          <div class="col-span-2 capitalize">{{ item.type }}</div>
-          <div class="col-span-2" @click="selectBundle(item)">
+          <div class="col-span-1" @click="selectBundle(item)">
             <SvgDynamicCheck :isChecked="isSelected(item.guid)" />
           </div>
           <div class="col-span-2"><UtilsCurrency :price="item.price" /></div>
