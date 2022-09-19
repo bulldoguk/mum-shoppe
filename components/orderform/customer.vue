@@ -1,8 +1,8 @@
 <template>
-  <div class="border-b-2">
+  <div class="formSection">
     <div class="flex flex-row justify-between">
       <div>
-        <h1 class="capitalize">About you</h1>
+        <h1 class="capitalize">Contact Information</h1>
       </div>
     </div>
     <div>
@@ -26,29 +26,23 @@
                 >Buyers name</label
               >
             </div>
-          </div>
-          <div class="col-span-6">
             <div class="relative z-0 mb-6 w-full group">
               <input
-                type="date"
-                name="orderDate"
-                id="orderDate"
+                type="email"
+                name="email"
+                id="email"
                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required=""
-                v-model="orderDate"
+                v-model="email"
                 @input="makeDirty()"
               />
               <label
-                for="orderDate"
+                for="email"
                 class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                >Date</label
+                >Email</label
               >
             </div>
-          </div>
-        </div>
-        <div class="grid md:grid-cols-12 md:gap-6">
-          <div class="col-span-6">
             <div class="relative z-0 mb-6 w-full group">
               <input
                 type="phone"
@@ -66,28 +60,9 @@
                 >Cell phone #</label
               >
             </div>
-          </div>
-          <div class="col-span-6">
-            <div class="flex flex-row justify-between">
+            <div class="flex flex-row justify-between mb-6 border-0 border-b-2 border-gray-300">
               <div
-                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              >
-                Member of KHS Band?
-              </div>
-              <input
-                class="text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                type="checkbox"
-                v-model="KHSBandMember"
-                @input="makeDirty()"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="grid md:grid-cols-12 md:gap-6">
-          <div class="col-span-6">
-            <div class="flex flex-row justify-between mb-6">
-              <div
-                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               >
                 OK to text at this number?
               </div>
@@ -98,25 +73,6 @@
                 @input="makeDirty()"
               />
             </div>
-          </div>
-          <div class="col-span-6">
-            <div class="flex flex-row justify-between mb-6">
-              <div
-                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              >
-                Member of KHS Band Color Guard?
-              </div>
-              <input
-                class="text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                type="checkbox"
-                v-model="KHSBandMemberColorGuard"
-                @input="makeDirty()"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="grid md:grid-cols-12 md:gap-6">
-          <div class="col-span-6">
             <div class="relative z-0 mb-6 w-full group">
               <select
                 name="wearerGrade"
@@ -141,6 +97,53 @@
             </div>
           </div>
           <div class="col-span-6">
+            <div class="relative z-0 mb-6 w-full group">
+              <input
+                type="date"
+                name="orderDate"
+                id="orderDate"
+                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                placeholder=" "
+                required=""
+                v-model="orderDate"
+                @input="makeDirty()"
+              />
+              <label
+                for="orderDate"
+                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                >Date</label
+              >
+            </div>
+            <div
+              class="flex flex-row justify-between mb-6 border-0 border-b-2 border-gray-300"
+            >
+              <div
+                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              >
+                Member of KHS Band?
+              </div>
+              <input
+                class="text-sm text-gray-900 bg-transparent dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                type="checkbox"
+                v-model="KHSBandMember"
+                @input="makeDirty()"
+              />
+            </div>
+            <div
+              class="flex flex-row justify-between mb-6 border-0 border-b-2 border-gray-300"
+            >
+              <div
+                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              >
+                Member of KHS Band Color Guard?
+              </div>
+              <input
+                class="text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                type="checkbox"
+                v-model="KHSBandMemberColorGuard"
+                @input="makeDirty()"
+              />
+            </div>
             <div class="relative z-0 mb-6 w-full group">
               <input
                 type="text"
@@ -215,6 +218,14 @@ export default defineComponent({
         this.setCustomer({ key: 'KHSBandMember', value: newVal })
       },
     },
+    email: {
+      get() {
+        return this.customer['email']
+      },
+      set(newVal) {
+        this.setCustomer({ key: 'email', value: newVal })
+      },
+    },
     cellPhone: {
       get() {
         return this.customer['cellPhone']
@@ -240,7 +251,12 @@ export default defineComponent({
       },
     },
     gradeOptions() {
-      const options = [{ name: 'Freshman', colors: 'red/silver/white' }]
+      const options = [
+        { name: 'Freshman', colors: 'red/silver/white' },
+        { name: 'Sophomore', colors: 'red/silver/white' },
+        { name: 'Junior', colors: 'silver/white' },
+        { name: 'Senior', colors: 'gold/white' },
+      ]
       return options
     },
   },

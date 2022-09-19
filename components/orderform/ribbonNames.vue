@@ -1,5 +1,5 @@
 <template>
-  <div class="border-b-2">
+  <div class="formSection">
     <div class="flex flex-row justify-between">
       <div>
         <h1 class="capitalize">Ribbon Names</h1>

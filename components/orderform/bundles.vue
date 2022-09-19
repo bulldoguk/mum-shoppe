@@ -1,17 +1,16 @@
 <template>
-  <div class="border-b-2">
+  <div class="formSection">
     <template v-if="hasSelected">
       <h1>Your bundle</h1>
       <div v-if="selectedBundle" class="grid grid-cols-12 mx-4">
-        <div class="col-span-5">
+        <div class="col-span-8">
           <span class="capitalize">{{ selectedBundle.type }}</span
           >: {{ selectedBundle.description }}
         </div>
-        <div class="col-span-2 capitalize">{{ selectedBundle.size }}</div>
-        <div class="col-span-2" @click="selectBundle(selectedBundle)">
+        <div class="col-span-1 capitalize">{{ selectedBundle.size }}</div>
+        <div class="col-span-2 justify-around flex" @click="selectBundle(selectedBundle)">
           <SvgDynamicCheck :isChecked="isSelected(selectedBundle.guid)" />
         </div>
-        <div class="col-span-2">&nbsp;</div>
         <div class="col-span-1 flex w-full justify-end">
           <UtilsCurrency :price="total" />
         </div>
