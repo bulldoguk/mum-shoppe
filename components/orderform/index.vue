@@ -9,6 +9,7 @@
       :key="section.id"
       :section="section"
     />
+    <TotalAndPayment />
   </div>
 </template>
 
@@ -20,6 +21,7 @@ import Instructions from './instructions.vue';
 import Customer from './customer.vue';
 import Bundles from './bundles.vue';
 import Section from './section.vue';
+import TotalAndPayment from './totalAndPayment.vue';
 
 export default defineComponent({
     setup() { },
@@ -42,6 +44,6 @@ export default defineComponent({
         // addShoppes: 'shoppes/shoppesList',
         }),
     },
-    components: { RibbonNames, Instructions, Customer, Bundles, Section }
+    components: { RibbonNames, Instructions, Customer, Bundles, Section, TotalAndPayment }
 })
 </script>

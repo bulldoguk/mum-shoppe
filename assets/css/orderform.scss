@@ -4,5 +4,8 @@
     .formSection {
       @apply border-2 border-gray-900 p-4 rounded-lg dark:border-gray-100;
     }
+    .totalSection {
+      @apply md:col-span-2 w-full border-2 border-gray-900 p-4 rounded-lg dark:border-gray-100;
+    }
   }
 }
