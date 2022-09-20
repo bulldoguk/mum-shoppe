@@ -1,9 +1,9 @@
 <template>
-  <div class="cursor-pointer">
+  <div class="cursor-pointer print:text-xs inline-block align-middle">
     <svg
       v-if="isChecked"
-      width="20"
-      height="20"
+      width="14"
+      height="14"
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -17,8 +17,8 @@
     </svg>
     <svg
       v-else
-      width="24"
-      height="24"
+      width="14"
+      height="14"
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

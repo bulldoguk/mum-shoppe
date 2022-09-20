@@ -1,5 +1,5 @@
 <template>
-  <div class="formSection">
+  <div class="customerSection">
     <div class="flex flex-row justify-between">
       <div>
         <h1 class="capitalize">Ribbon Names</h1>
@@ -7,10 +7,10 @@
     </div>
     <div>
       <form>
-        <div class="grid md:grid-cols-12 md:gap-6">
+        <div class="grid print:grid-cols-12 print:gap-2 md:grid-cols-12 md:gap-6">
           <div class="col-span-6">
             <div class="w-full"><h2>Ribbon 1</h2></div>
-            <div class="relative z-0 mb-6 w-full group">
+            <div class="textInput group">
               <input
                 type="text"
                 name="ribbonName1"
@@ -27,7 +27,7 @@
                 >Name</label
               >
             </div>
-            <div class="relative z-0 mb-6 w-full group">
+            <div class="textInput group">
               <input
                 type="text"
                 name="grade1"
@@ -44,7 +44,7 @@
                 >Grade</label
               >
             </div>
-            <div class="relative z-0 mb-6 w-full group">
+            <div class="textInput group">
               <input
                 type="text"
                 name="activity1"
@@ -61,7 +61,7 @@
                 >Sport / Activity</label
               >
             </div>
-            <div class="relative z-0 mb-6 w-full group">
+            <div class="textInput group">
               <input
                 type="text"
                 name="school1"
@@ -81,7 +81,7 @@
           </div>
           <div class="col-span-6">
             <div class="w-full"><h2>Ribbon 2</h2></div>
-            <div class="relative z-0 mb-6 w-full group">
+            <div class="textInput group">
               <input
                 type="text"
                 name="ribbonName2"
@@ -98,7 +98,7 @@
                 >Name</label
               >
             </div>
-            <div class="relative z-0 mb-6 w-full group">
+            <div class="textInput group">
               <input
                 type="text"
                 name="grade2"
@@ -115,7 +115,7 @@
                 >Grade</label
               >
             </div>
-            <div class="relative z-0 mb-6 w-full group">
+            <div class="textInput group">
               <input
                 type="text"
                 name="activity2"
@@ -132,7 +132,7 @@
                 >Sport / Activity</label
               >
             </div>
-            <div class="relative z-0 mb-6 w-full group">
+            <div class="textInput group">
               <input
                 type="text"
                 name="school2"

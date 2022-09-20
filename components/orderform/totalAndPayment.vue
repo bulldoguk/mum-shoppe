@@ -1,6 +1,6 @@
 <template>
   <div class="totalSection">
-    <div class="grid md:grid-cols-2 gap-6">
+    <div class="grid print:grid-cols-2 print:gap-6 md:grid-cols-2 md:gap-6">
       <div>
         <div class="flex flex-row justify-between">
           <div>Subtotal:</div>

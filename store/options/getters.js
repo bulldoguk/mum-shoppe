@@ -1,5 +1,10 @@
 export default {
   list(state) {
-    return state.list
+    const sortedList = [...state.list]
+    return sortedList.sort((l, r) => {
+      if (l.position > r.position) { return 1 }
+      if (l.position === r.position) { return 0 }
+      if (l.position < r.position) { return -1 }
+    })
   },
 }

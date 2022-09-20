@@ -3,13 +3,13 @@
     @apply bg-white dark:bg-gray-900;
   }
   h1 {
-    @apply mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white;
+    @apply print:mb-1 mb-4 text-4xl print:text-xxs font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white;
   }
   h2 {
-    @apply text-3xl font-extrabold dark:text-white;
+    @apply print:text-xxs font-extrabold dark:text-white;
   }
   h3 {
-    @apply text-2xl font-bold dark:text-white;
+    @apply text-2xl print:text-xxs font-bold dark:text-white;
   }
   h4 {
     @apply text-xl font-bold dark:text-white;
@@ -21,10 +21,10 @@
     @apply font-bold dark:text-white;
   }
   div {
-    @apply font-light text-gray-500 dark:text-white;
+    @apply print:text-xxs font-light text-gray-500 dark:text-white;
   }
   p {
-    @apply mb-3 font-light text-gray-500 dark:text-white;
+    @apply print:text-xxs print:mb-1 mb-3 font-light text-gray-500 dark:text-white;
   }
   ul {
     @apply space-y-1 max-w-md list-disc list-inside text-gray-500 dark:text-gray-400;

@@ -1,14 +1,18 @@
 <template>
   <div class="orderform">
-    <Customer />
-    <RibbonNames />
+    <div class="customerSections">
+      <Customer />
+      <RibbonNames />
+    </div>
     <Instructions />
     <Bundles />
-    <Section
-      v-for="section of options"
-      :key="section.id"
-      :section="section"
-    />
+    <div class="formSections">
+      <Section
+        v-for="section of options"
+        :key="section.id"
+        :section="section"
+      />
+    </div>
     <TotalAndPayment />
   </div>
 </template>
@@ -17,33 +21,40 @@
 import { defineComponent } from '@vue/composition-api'
 import { mapGetters, mapMutations } from 'vuex'
 import RibbonNames from './ribbonNames.vue'
-import Instructions from './instructions.vue';
-import Customer from './customer.vue';
-import Bundles from './bundles.vue';
-import Section from './section.vue';
-import TotalAndPayment from './totalAndPayment.vue';
+import Instructions from './instructions.vue'
+import Customer from './customer.vue'
+import Bundles from './bundles.vue'
+import Section from './section.vue'
+import TotalAndPayment from './totalAndPayment.vue'
 
 export default defineComponent({
-    setup() { },
-    mounted() { },
-    computed: {
-        ...mapGetters({
-            options: "options/list",
-            shoppeGuid: "shoppes/getShoppeGuid",
-        }),
-        shopSlug() {
-            const parts = this.$route.params.pathMatch.split("/");
-            return parts[0];
-        },
-        thisShoppeGuid() {
-            return this.shoppeGuid(this.shopSlug);
-        },
+  setup() {},
+  mounted() {},
+  computed: {
+    ...mapGetters({
+      options: 'options/list',
+      shoppeGuid: 'shoppes/getShoppeGuid',
+    }),
+    shopSlug() {
+      const parts = this.$route.params.pathMatch.split('/')
+      return parts[0]
     },
-    methods: {
-        ...mapMutations({
-        // addShoppes: 'shoppes/shoppesList',
-        }),
+    thisShoppeGuid() {
+      return this.shoppeGuid(this.shopSlug)
     },
-    components: { RibbonNames, Instructions, Customer, Bundles, Section, TotalAndPayment }
+  },
+  methods: {
+    ...mapMutations({
+      // addShoppes: 'shoppes/shoppesList',
+    }),
+  },
+  components: {
+    RibbonNames,
+    Instructions,
+    Customer,
+    Bundles,
+    Section,
+    TotalAndPayment,
+  },
 })
 </script>

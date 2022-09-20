@@ -1,6 +1,6 @@
 <template>
-  <div class="formSection">
-    <template v-if="hasSelected">
+  <div class="bundleSection">
+    <div class="bundleSelected" v-if="hasSelected">
       <h1>Your bundle</h1>
       <div v-if="selectedBundle" class="grid grid-cols-12 mx-4">
         <div class="col-span-8">
@@ -15,10 +15,10 @@
           <UtilsCurrency :price="total" />
         </div>
       </div>
-    </template>
-    <template v-else>
-      <h1>Pick your bundle</h1>
-      <div v-for="(size, index) of sizes" :key="index">
+    </div>
+    <div class="bundleChoices" v-else>
+      <h1 class="w-full">Pick your bundle</h1>
+      <div class="choice" v-for="(size, index) of sizes" :key="index">
         <h2 class="capitalize">{{ size }}</h2>
         <div
           class="grid grid-cols-12 mx-4"
@@ -42,7 +42,7 @@
           <UtilsCurrency :price="total" />
         </div>
       </div>
-    </template>
+    </div>
   </div>
 </template>
 

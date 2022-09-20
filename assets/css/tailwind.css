@@ -1,9 +1,15 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 @import './typography.scss';
 @import './header.scss';
 @import './main.scss';
 @import './orderform.scss';
 @import './footer.scss';
 @import './cards.scss';
+
+@layer base {
+  .text-xxs {
+    font-size: 0.45rem;
+  }
+}

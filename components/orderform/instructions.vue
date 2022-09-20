@@ -1,5 +1,5 @@
 <template>
-  <div class="md:col-span-2 w-full m-2">
+  <div class="instructions">
     <h1>Instructions</h1>
     <p>
       Select your starting bundle. Note that each bundle has default options in

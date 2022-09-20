@@ -1,11 +1,40 @@
 @layer components {
   .orderform {
-    @apply w-full md:grid md:grid-cols-2 md:gap-6;
-    .formSection {
-      @apply border-2 border-gray-900 p-4 rounded-lg dark:border-gray-100;
+    @apply w-full;
+    .customerSections {
+      @apply print:grid print:grid-cols-2 print:gap-2 md:grid md:grid-cols-2 md:gap-4;
+      .customerSection {
+        @apply border-2 border-gray-900 p-4 rounded-lg dark:border-gray-100;
+        .textInput {
+          @apply print:mb-1 relative z-0 mb-6 w-full;
+        }
+        .checkboxInput {
+          @apply print:mb-1 flex flex-row justify-between mb-6 print:border-b-0 border-0 border-b-2 border-gray-300;
+        }
+      }
+    }
+    .formSections {
+      @apply print:columns-3 print:gap-2 md:columns-2 md:gap-4 my-2;
+      .formSection {
+        @apply border-2 border-gray-900 p-4 print:p-1 print:mb-1 break-inside-avoid-column my-2 rounded-lg dark:border-gray-100;
+      }
     }
     .totalSection {
-      @apply md:col-span-2 w-full border-2 border-gray-900 p-4 rounded-lg dark:border-gray-100;
+      @apply print:col-span-6 md:col-span-2 w-full border-2 border-gray-900 p-4 print:p-1 rounded-lg dark:border-gray-100;
+    }
+    .instructions {
+      @apply print:col-span-6 md:col-span-2 w-full m-2;
+    }
+    .bundleSection {
+      @apply print:col-span-6 md:col-span-2 w-full p-2 border-2 border-gray-900 rounded-lg dark:border-gray-100;
+      .bundleSelected {
+      }
+      .bundleChoices {
+        @apply flex flex-wrap;
+        .choice {
+          @apply w-1/2;
+        }
+      }
     }
   }
 }
