@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
         to: payload.recipient, // Change to your recipient
         from: 'mumshoppe@myhmbiz.com', // Change to your verified sender
         subject: payload.subject,
-        text: payload.body,
+        text: 'If you\'re seeing this message, please view this email in a browser to enable links to work',
         html: `<p>${payload.body}</p>`,
     }
 
