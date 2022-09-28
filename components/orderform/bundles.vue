@@ -36,12 +36,6 @@
           <div class="col-span-1">&nbsp;</div>
         </div>
       </div>
-      <div class="grid grid-cols-12 mx-4 px-4">
-        <div class="col-span-11">&nbsp;</div>
-        <div class="col-span-1 flex w-full justify-end">
-          <UtilsCurrency :price="total" />
-        </div>
-      </div>
     </div>
   </div>
 </template>
