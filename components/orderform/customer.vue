@@ -13,16 +13,16 @@
             <div class="textInput group">
               <input
                 type="text"
-                name="buyerName"
-                id="buyerName"
+                name="name"
+                id="name"
                 class="block py-2.5 px-0 w-full print:text-xs text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required=""
-                v-model="buyerName"
+                v-model="name"
                 @input="makeDirty()"
               />
               <label
-                for="buyerName"
+                for="name"
                 class="peer-focus:font-medium absolute print:text-xs text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                 >Buyers name</label
               >
@@ -177,7 +177,7 @@ export default defineComponent({
     }),
     wearerGrade: {
       get() {
-        return this.customer['wearerGrade']
+        return this.customer.wearerGrade
       },
       set(newVal) {
         this.setCustomer({ key: 'wearerGrade', value: newVal })
@@ -185,7 +185,7 @@ export default defineComponent({
     },
     bandInstrument: {
       get() {
-        return this.customer['bandInstrument']
+        return this.customer.bandInstrument
       },
       set(newVal) {
         this.setCustomer({ key: 'bandInstrument', value: newVal })
@@ -193,7 +193,7 @@ export default defineComponent({
     },
     KHSBandMemberColorGuard: {
       get() {
-        return this.customer['KHSBandMemberColorGuard']
+        return this.customer.KHSBandMemberColorGuard
       },
       set(newVal) {
         this.setCustomer({ key: 'KHSBandMemberColorGuard', value: newVal })
@@ -201,7 +201,7 @@ export default defineComponent({
     },
     OKToText: {
       get() {
-        return this.customer['OKToText']
+        return this.customer.OKToText
       },
       set(newVal) {
         this.setCustomer({ key: 'OKToText', value: newVal })
@@ -209,7 +209,7 @@ export default defineComponent({
     },
     KHSBandMember: {
       get() {
-        return this.customer['KHSBandMember']
+        return this.customer.KHSBandMember
       },
       set(newVal) {
         this.setCustomer({ key: 'KHSBandMember', value: newVal })
@@ -217,7 +217,7 @@ export default defineComponent({
     },
     email: {
       get() {
-        return this.customer['email']
+        return this.customer.email
       },
       set(newVal) {
         this.setCustomer({ key: 'email', value: newVal })
@@ -225,7 +225,7 @@ export default defineComponent({
     },
     cellPhone: {
       get() {
-        return this.customer['cellPhone']
+        return this.customer.cellPhone
       },
       set(newVal) {
         this.setCustomer({ key: 'cellPhone', value: newVal })
@@ -233,18 +233,18 @@ export default defineComponent({
     },
     orderDate: {
       get() {
-        return this.customer['orderDate']
+        return this.customer.orderDate
       },
       set(newVal) {
         this.setCustomer({ key: 'orderDate', value: newVal })
       },
     },
-    buyerName: {
+    name: {
       get() {
-        return this.customer['buyerName']
+        return this.customer.name
       },
       set(newVal) {
-        this.setCustomer({ key: 'buyerName', value: newVal })
+        this.setCustomer({ key: 'name', value: newVal })
       },
     },
     gradeOptions() {

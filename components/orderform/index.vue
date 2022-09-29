@@ -29,7 +29,19 @@ import TotalAndPayment from './totalAndPayment.vue'
 
 export default defineComponent({
   setup() {},
-  mounted() {},
+  mounted() {
+    if (this.$route.query.orderid) {
+      const uri = `/orders/byId?orderid=${this.$route.query.orderid}`
+      this.$api
+        .get(uri)
+        .then((resp) => {
+          this.newOrder(resp.data)
+        })
+        .catch((e) => {
+          console.log('Failed to load order', e)
+        })
+    }
+  },
   computed: {
     ...mapGetters({
       options: 'options/list',
@@ -47,11 +59,16 @@ export default defineComponent({
   methods: {
     ...mapMutations({
       // addShoppes: 'shoppes/shoppesList',
+      newOrder: 'order/newOrder',
     }),
     submitOrder() {
       // TODO: validate all forms before submitting
       const uri = `/orders/`
       const payload = { ...this.order }
+      if (!payload.shoppe_guid) {
+        payload.shoppe_guid = this.thisShoppeGuid
+      }
+      console.log('Sending ', payload)
       this.$api
         .patch(uri, payload)
         .then((resp) => {

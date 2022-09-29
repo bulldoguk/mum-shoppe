@@ -168,7 +168,7 @@ export default defineComponent({
     }),
     ribbonName1: {
       get() {
-        return this.ribbonNames['ribbonName1']
+        return this.ribbonNames.ribbonName1
       },
       set(newVal) {
         this.setRibbonName({ key: 'ribbonName1', value: newVal })
@@ -176,7 +176,7 @@ export default defineComponent({
     },
     ribbonName2: {
       get() {
-        return this.ribbonNames['ribbonName2']
+        return this.ribbonNames.ribbonName2
       },
       set(newVal) {
         this.setRibbonName({ key: 'ribbonName2', value: newVal })
@@ -184,7 +184,7 @@ export default defineComponent({
     },
     grade1: {
       get() {
-        return this.ribbonNames['grade1']
+        return this.ribbonNames.grade1
       },
       set(newVal) {
         this.setRibbonName({ key: 'grade1', value: newVal })
@@ -192,7 +192,7 @@ export default defineComponent({
     },
     grade2: {
       get() {
-        return this.ribbonNames['grade2']
+        return this.ribbonNames.grade2
       },
       set(newVal) {
         this.setRibbonName({ key: 'grade2', value: newVal })
@@ -200,7 +200,7 @@ export default defineComponent({
     },
     activity1: {
       get() {
-        return this.ribbonNames['activity1']
+        return this.ribbonNames.activity1
       },
       set(newVal) {
         this.setRibbonName({ key: 'activity1', value: newVal })
@@ -208,7 +208,7 @@ export default defineComponent({
     },
     activity2: {
       get() {
-        return this.ribbonNames['activity2']
+        return this.ribbonNames.activity2
       },
       set(newVal) {
         this.setRibbonName({ key: 'activity2', value: newVal })
@@ -216,7 +216,7 @@ export default defineComponent({
     },
     school1: {
       get() {
-        return this.ribbonNames['school1']
+        return this.ribbonNames.school1
       },
       set(newVal) {
         this.setRibbonName({ key: 'school1', value: newVal })
@@ -224,7 +224,7 @@ export default defineComponent({
     },
     school2: {
       get() {
-        return this.ribbonNames['school2']
+        return this.ribbonNames.school2
       },
       set(newVal) {
         this.setRibbonName({ key: 'school2', value: newVal })

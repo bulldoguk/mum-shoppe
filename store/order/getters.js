@@ -66,16 +66,16 @@ export default {
     )
     return index >= 0
   },
-  getCustomerDetails: (state) => (key) => {
+  getCustomerDetails(state) {
     try {
-      return state.customer(key)
+      return state.customer
     } catch {
       return ''
     }
   },
-  getRibbonNames: (state) => (key) => {
+  getRibbonNames(state) {
     try {
-      return state.ribbonNames(key)
+      return state.ribbonNames
     } catch {
       return ''
     }

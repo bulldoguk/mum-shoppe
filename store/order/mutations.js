@@ -21,5 +21,9 @@ export default {
   },
   updateRibbonNames(state, object) {
     state.ribbonNames[object.key] = object.value
+  },
+  newOrder(state, order) {
+    console.log('Received', order)
+    Object.assign(state, order)
   }
 }
