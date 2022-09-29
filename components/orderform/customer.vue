@@ -6,7 +6,6 @@
       </div>
     </div>
     <div>
-      <a class="button button-green" @click="findMyOrder">Find My Order</a>
       <form>
         <div class="grid md:grid-cols-2 md:gap-6">
           <div>
@@ -263,22 +262,6 @@ export default defineComponent({
     }),
     makeDirty() {
       return true
-    },
-    findMyOrder() {
-      const payload = {
-        recipient: 'gary@myhmbiz.com',
-        subject: 'Find my order',
-        body: 'Here it is!',
-      }
-      const uri = '/api/sendgrid/postEmail'
-      this.$axios
-        .post(uri, payload)
-        .then((res) => {
-          console.log('Returned', res.data)
-        })
-        .catch((e) => {
-          console.log('Failed to send', e)
-        })
     },
   },
 })
