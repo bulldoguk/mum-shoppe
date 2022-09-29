@@ -13,7 +13,7 @@
         :section="section"
       />
     </div>
-    <TotalAndPayment />
+    <TotalAndPayment @submitOrder="submitOrder" />
   </div>
 </template>
 
@@ -34,6 +34,7 @@ export default defineComponent({
     ...mapGetters({
       options: 'options/list',
       shoppeGuid: 'shoppes/getShoppeGuid',
+      order: 'order/orderToSend',
     }),
     shopSlug() {
       const parts = this.$route.params.pathMatch.split('/')
@@ -47,6 +48,19 @@ export default defineComponent({
     ...mapMutations({
       // addShoppes: 'shoppes/shoppesList',
     }),
+    submitOrder() {
+      // TODO: validate all forms before submitting
+      const uri = `/orders/`
+      const payload = { ...this.order }
+      this.$api
+        .patch(uri, payload)
+        .then((resp) => {
+          console.log(resp.data)
+        })
+        .catch((e) => {
+          console.log('Failed to update order', e)
+        })
+    },
   },
   components: {
     RibbonNames,

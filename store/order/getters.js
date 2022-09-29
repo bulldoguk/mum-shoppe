@@ -80,4 +80,7 @@ export default {
       return ''
     }
   },
+  orderToSend: (state) => {
+    return {...state}
+  }
 }

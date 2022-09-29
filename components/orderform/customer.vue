@@ -6,7 +6,7 @@
       </div>
     </div>
     <div>
-      <a @click="findMyOrder">Find My Order</a>
+      <a class="button button-green" @click="findMyOrder">Find My Order</a>
       <form>
         <div class="grid md:grid-cols-2 md:gap-6">
           <div>

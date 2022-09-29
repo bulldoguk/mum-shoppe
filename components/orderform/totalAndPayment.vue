@@ -25,6 +25,10 @@
             <strong>Payment notes here</strong>
         </form>
       </div>
+      <div class="col-span-2 mx-auto flex flex-row justify-around gap-8">
+        <a class="button button-blue" @click="$emit('submitOrder')">Send my order</a>
+        <a class="button button-red" @click="$emit('resetOrder')">Reset order</a>
+      </div>
     </div>
   </div>
 </template>
