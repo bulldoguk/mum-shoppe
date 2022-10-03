@@ -1,6 +1,7 @@
 export default {
   state() {
     return {
+      modalMode: ''
     }
   },
   actions: {
@@ -17,6 +18,4 @@ export default {
         })
     },
   },
-  mutations: {
-  }
 }

@@ -8,6 +8,7 @@
 @import './footer.scss';
 @import './cards.scss';
 @import './buttons.scss';
+@import './modal.scss';
 
 @layer base {
   .text-xxs {

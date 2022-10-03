@@ -1,9 +1,12 @@
 <template>
-  <div class="outerlayout">
-    <TheHeader />
-    <div class="main">
-      <Nuxt />
+  <div>
+    <Modal />
+    <div class="outerlayout">
+      <TheHeader />
+      <div class="main">
+        <Nuxt />
+      </div>
+      <TheFooter />
     </div>
-    <TheFooter />
   </div>
 </template>

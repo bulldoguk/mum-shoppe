@@ -15,6 +15,7 @@
   "dependencies": {
     "@nuxtjs/auth-next": "^5.0.0-1648802546.c9880dc",
     "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/dotenv": "^1.4.1",
     "@sendgrid/mail": "^7.7.0",
     "@vue/composition-api": "^1.7.0",
     "core-js": "^3.19.3",

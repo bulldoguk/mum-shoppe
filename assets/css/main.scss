@@ -2,4 +2,13 @@
   .main {
     @apply max-w-screen-lg mx-auto print:my-2 my-4;
   }
+  .alerts {
+    @apply p-4 mb-4 text-sm rounded-lg;
+  }
+  .alertDanger {
+    @apply text-red-700 bg-red-100 dark:bg-red-200 dark:text-red-800;
+  }
+  .alertSuccess {
+    @apply text-green-700 bg-green-100 dark:bg-green-200 dark:text-green-800;
+  }
 }

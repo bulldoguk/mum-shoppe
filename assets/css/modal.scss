@@ -1,0 +1,32 @@
+@layer components {
+  .screen {
+    @apply fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none;
+    .modal {
+      @apply relative my-6 mx-auto w-auto max-w-md w-screen z-50;
+      p {
+        @apply dark:text-gray-500;
+      }
+      .modal-dialog {
+        @apply pointer-events-none relative w-auto;
+        .modal-content {
+          @apply pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none;
+          .modal-header {
+            @apply flex flex-shrink-0 items-center justify-between rounded-t-md border-b border-gray-200 p-4;
+            h1 {
+                @apply text-xl font-medium leading-normal text-gray-800;
+            }
+          }
+          .modal-body {
+            @apply relative p-4;
+          }
+          .modal-footer {
+            @apply flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t border-gray-200 p-4;
+          }
+        }
+      }
+    }
+    .mask {
+      @apply fixed inset-0 z-40 bg-black opacity-25;
+    }
+  }
+}

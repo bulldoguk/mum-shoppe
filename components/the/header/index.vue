@@ -46,7 +46,10 @@ export default {
     toggleMobileMenu() {
       this.showMobileMenu = !this.showMobileMenu
     },
-    findMyOrder(userEmail) {
+    findMyOrder () {
+      this.fireModal('findMyOrder')
+    },
+    oldFindMyOrder(userEmail) {
       let uri = `orders/listByCustomer?email=${userEmail}`
       const payload = {}
       payload.recipient = userEmail
