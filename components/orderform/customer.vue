@@ -12,6 +12,23 @@
             <div class="textInput group">
               <input
                 type="text"
+                name="orderTitle"
+                id="orderTitle"
+                class="block py-2.5 px-0 w-full print:text-xs text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                placeholder=" "
+                required=""
+                v-model="orderTitle"
+                @input="makeDirty()"
+              />
+              <label
+                for="orderTitle"
+                class="peer-focus:font-medium absolute print:text-xs text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                >Order Title</label
+              >
+            </div>
+            <div class="textInput group">
+              <input
+                type="text"
                 name="name"
                 id="name"
                 class="block py-2.5 px-0 w-full print:text-xs text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -174,6 +191,14 @@ export default defineComponent({
     ...mapGetters({
       customer: 'order/getCustomerDetails',
     }),
+    orderTitle: {
+      get() {
+        return this.customer.orderTitle
+      },
+      set(newVal) {
+        this.setCustomer({ key: 'orderTitle', value: newVal })
+      },
+    },
     wearerGrade: {
       get() {
         return this.customer.wearerGrade
@@ -255,6 +280,9 @@ export default defineComponent({
       ]
       return options
     },
+    validate() {
+      return 'got it'
+    }
   },
   methods: {
     ...mapMutations({

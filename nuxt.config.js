@@ -49,7 +49,8 @@ export default {
   publicRuntimeConfig: {
     apikey: process.env.APIKEY || '',
     apiprotocol: process.env.PROTOCOL || 'http://',
-    apiurl: process.env.APIURL || '127.0.0.1:8000'
+    apiurl: process.env.APIURL || '127.0.0.1:8000',
+    serverurl: process.env.SERVERURL || 'localhost:3000'
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

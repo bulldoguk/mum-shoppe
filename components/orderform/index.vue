@@ -1,11 +1,12 @@
 <template>
   <div class="orderform">
+    <a class="cursor-pointer" @click="validateForm">Validate form</a>
     <div class="customerSections">
-      <Customer />
-      <RibbonNames />
+      <Customer ref="customer" />
+      <RibbonNames ref="ribbonNames" />
     </div>
-    <Instructions />
-    <Bundles />
+    <Instructions ref="instructions" />
+    <Bundles ref="bundles" />
     <div class="formSections">
       <Section
         v-for="section of options"
@@ -13,7 +14,7 @@
         :section="section"
       />
     </div>
-    <TotalAndPayment @submitOrder="submitOrder" />
+    <TotalAndPayment @submitOrder="submitOrder" ref="totalAndPayment" />
   </div>
 </template>
 
@@ -77,6 +78,12 @@ export default defineComponent({
         .catch((e) => {
           console.log('Failed to update order', e)
         })
+    },
+    validateForm() {
+      for (const ref of Object.keys(this.$refs)) {
+        console.log('Checking ', this.$refs[ref].validate)
+      }
+      return true
     },
   },
   components: {

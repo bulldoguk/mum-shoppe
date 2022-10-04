@@ -10,6 +10,7 @@ export default {
         KHSBandMemberColorGuard: false,
         bandInstrument: '',
         wearerGrade: { name: 'Junior', colors: 'red/silver/white' },
+        orderTitle: ''
       },
       ribbonNames: {
         ribbonName1: '',

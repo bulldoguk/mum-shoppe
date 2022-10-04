@@ -93,42 +93,56 @@ export default {
         .get(uri)
         .then((resp) => {
           const orders = resp.data
-          if (orders.length <= 1) {
+          console.log(orders)
+          if (orders.length < 1) {
             throw new Error('No orders found')
           }
-          payload.body = buildEmail(orders)
+          payload.body = this.buildEmail(orders)
         })
         .then(() => {
           uri = '/api/sendgrid/postEmail'
-          this.$axios.post(uri, payload)
-          .then((res) => {
-            console.log('Returned', res.data)
-          })
-          .then(() => {
-            this.messageClass = 'alertSuccess'
-            this.message = 'Your orders have been emailed to you'
-          })
-          .catch((e) => {
-            console.log(e)
-            throw new Error('Failed to send email')
-          })
+          this.$axios
+            .post(uri, payload)
+            .then((res) => {
+              console.log('Returned', res.data)
+            })
+            .then(() => {
+              this.messageClass = 'alertSuccess'
+              this.message = 'Your orders have been emailed to you'
+            })
+            .catch((e) => {
+              console.log(e)
+              throw new Error('Failed to send email')
+            })
         })
         .catch((e) => {
+          console.log('Error thrown', e)
           this.messageClass = 'alertDanger'
           this.message =
             'Failed to find your orders, please check your email and try again'
         })
     },
+    buildEmail(orders) {
+      let body = '<p>Here are your current Mum Shoppe orders</p>'
+      body += '<ul>'
+      for (const order of orders) {
+        const dateParts = order.customer.orderDate
+          ? order.customer.orderDate.split('-')
+          : []
+        body += `<li><a href="${this.$config.serverurl}/${order.shoppeInfo[0].slug}?orderid=${order.guid}">`
+        body +=
+          dateParts.length > 0
+            ? `${dateParts[1]}/${dateParts[2]}/${dateParts[0]}:&nbsp;`
+            : ''
+        body +=
+          order.customer.orderTitle.length > 0
+            ? `${order.customer.orderTitle}`
+            : ''
+        body += `</a></li>`
+      }
+      body += '</ul>'
+      return body
+    },
   },
-}
-
-function buildEmail(orders) {
-  let body = '<p>Here are your current Mum Shoppe orders</p>'
-  body += '<ul>'
-  for (const order of orders) {
-    body += `<li><a href="?orderid=${order.guid}">${order.customer.date}</a></li>`
-  }
-  body += '</ul>'
-  return body
 }
 </script>
