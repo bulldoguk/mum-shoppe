@@ -9,7 +9,7 @@
           />
           <span>Mum Shoppe</span>
         </nuxt-link>
-        <a class="button button-green" @click="findMyOrder('gary@myhmbiz.com')"
+        <a class="button button-green" @click="findMyOrder"
           >Find My Order</a
         >
         <nuxt-link :to="'/admin'"> Admin </nuxt-link>

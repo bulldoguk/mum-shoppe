@@ -13,14 +13,14 @@
           .modal-header {
             @apply flex flex-shrink-0 items-center justify-between rounded-t-md border-b border-gray-200 p-4;
             h1 {
-                @apply text-xl font-medium leading-normal text-gray-800;
+              @apply text-xl font-medium leading-normal text-gray-800;
             }
           }
           .modal-body {
             @apply relative p-4;
           }
           .modal-footer {
-            @apply flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t border-gray-200 p-4;
+            @apply flex flex-row justify-between items-center rounded-b-md border-t border-gray-200 p-4;
           }
         }
       }

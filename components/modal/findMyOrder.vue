@@ -52,9 +52,9 @@
         </div>
       </form>
     </div>
-    <div class="modal-footer flex flex-row justify-between">
-      <a class="button button-blue" @click="resetModal">Cancel</a>
+    <div class="modal-footer">
       <a class="button button-green" @click="findMyOrder">Find my Order</a>
+      <a class="button button-gray" @click="resetModal">Close</a>
     </div>
   </div>
 </template>

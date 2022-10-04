@@ -14,7 +14,7 @@
         :section="section"
       />
     </div>
-    <TotalAndPayment @submitOrder="submitOrder" ref="totalAndPayment" />
+    <TotalAndPayment @saveOrder="saveOrder" ref="totalAndPayment" />
   </div>
 </template>
 
@@ -61,23 +61,10 @@ export default defineComponent({
     ...mapMutations({
       // addShoppes: 'shoppes/shoppesList',
       newOrder: 'order/newOrder',
+      fireModal: 'MODAL_INIT',
     }),
-    submitOrder() {
-      // TODO: validate all forms before submitting
-      const uri = `/orders/`
-      const payload = { ...this.order }
-      if (!payload.shoppe_guid) {
-        payload.shoppe_guid = this.thisShoppeGuid
-      }
-      console.log('Sending ', payload)
-      this.$api
-        .patch(uri, payload)
-        .then((resp) => {
-          console.log(resp.data)
-        })
-        .catch((e) => {
-          console.log('Failed to update order', e)
-        })
+    saveOrder() {
+      this.fireModal('saveMyOrder')
     },
     validateForm() {
       for (const ref of Object.keys(this.$refs)) {

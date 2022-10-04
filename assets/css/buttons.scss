@@ -11,4 +11,7 @@
   .button-red {
     @apply text-white from-red-500 via-red-600 to-red-700 focus:ring-red-300 dark:focus:ring-red-800 shadow-red-500/50 dark:shadow-red-800/80;
   }
+  .button-gray {
+    @apply text-white from-gray-500 via-gray-600 to-gray-700 focus:ring-gray-300 dark:focus:ring-gray-800 shadow-gray-500/50 dark:shadow-gray-800/80;
+  }
 }
