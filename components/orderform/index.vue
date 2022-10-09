@@ -1,6 +1,5 @@
 <template>
   <div class="orderform">
-    <a class="cursor-pointer" @click="validateForm">Validate form</a>
     <div class="customerSections">
       <Customer ref="customer" />
       <RibbonNames ref="ribbonNames" />
@@ -65,12 +64,6 @@ export default defineComponent({
     }),
     saveOrder() {
       this.fireModal('saveMyOrder')
-    },
-    validateForm() {
-      for (const ref of Object.keys(this.$refs)) {
-        console.log('Checking ', this.$refs[ref].validate)
-      }
-      return true
     },
   },
   components: {
