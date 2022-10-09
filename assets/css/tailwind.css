@@ -9,6 +9,7 @@
 @import './cards.scss';
 @import './buttons.scss';
 @import './modal.scss';
+@import './progressBar.scss';
 
 @layer base {
   .text-xxs {
