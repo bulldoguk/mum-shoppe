@@ -10,8 +10,15 @@
       ></button>
     </div>
     <div class="modal-body">
-      <ProgressBar />
+      <Introduction v-if="panelIndex == 0" />
+      <Bundle v-if="panelIndex == 1" />
+      <Section v-if="panelIndex > 1" :sectionIndex="panelIndex" />
+      <div class="flex flex-row justify-between items-center px-2">
+        <a @click="goBack" class="button button-gray"><<</a>
+        <a @click="goOn" class="button button-gray">>></a>
+      </div>
     </div>
+    <ProgressBar :currentPosition="panelIndex" />
     <div class="modal-footer">
       <a class="button button-green" @click="saveOrder">Save order</a>
       <a class="button button-gray" @click="resetModal">Close</a>
@@ -20,12 +27,28 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapGetters } from 'vuex'
 import ProgressBar from './helpMeChoose/progressBar.vue'
+import Introduction from './helpMeChoose/introduction.vue'
+import Section from './helpMeChoose/section.vue'
+import Bundle from './helpMeChoose/bundle.vue'
 export default {
   data() {
     return {
+      panelIndex: 0,
     }
+  },
+  computed: {
+    ...mapGetters({
+      sectionList: 'options/list',
+    }),
+    panels() {
+      return [
+        { guid: '', title: 'Introduction', notes: '' },
+        { guid: '', title: 'Pick a starting bundle', notes: '' },
+        ...this.sectionList,
+      ]
+    },
   },
   methods: {
     ...mapMutations({
@@ -35,7 +58,19 @@ export default {
     saveOrder() {
       this.fireModal('saveMyOrder')
     },
+    goBack() {
+      this.panelIndex--
+      if (this.panelIndex < 0) {
+        this.panelIndex = 0
+      }
+    },
+    goOn() {
+      this.panelIndex++
+      if (this.panelIndex > this.panels.length) {
+        this.panelIndex = this.panels.length
+      }
+    },
   },
-  components: { ProgressBar },
+  components: { ProgressBar, Introduction, Section, Bundle },
 }
 </script>

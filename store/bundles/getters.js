@@ -10,7 +10,11 @@ export default {
     return [...new Set(ourList.map((item) => item.size))]
   },
   listBySize: (state) => (size) => {
-    return state.list.filter((e) => e.size === size)
+    try {
+      return state.list.filter((e) => e.size.toLowerCase() === size.toLowerCase())
+    } catch {
+      return []
+    }
   },
   getTotal(state) {
     try {

@@ -8,18 +8,11 @@
 
 <script>
 import { defineComponent } from '@vue/composition-api'
+import { mapGetters } from 'vuex'
 
 export default defineComponent({
   setup() {},
   props: {
-    bundleCount: {
-      type: Number,
-      default: 0,
-    },
-    sectionCount: {
-      type: Number,
-      default: 0,
-    },
     currentPosition: {
       type: Number,
       default: 0,
@@ -30,9 +23,21 @@ export default defineComponent({
     }
   },
   computed: {
+    ...mapGetters({
+      sectionList: 'options/list'
+    }),
+    bundleCount () {
+      return 1
+    },
+    sectionCount () {
+      return this.sectionList.length
+    },
+    targetCount () {
+      return Math.max(this.bundleCount + this.sectionCount, 1)
+    },
     progress() {
         try {
-            return this.currentPosition / (this.bundleCount + this.sectionCount)
+            return Math.min(this.currentPosition / this.targetCount, 1)
         } catch {
             return 0
         }
