@@ -7,11 +7,9 @@
     <Instructions ref="instructions" />
     <Bundles ref="bundles" />
     <div class="formSections">
-      <Section
-        v-for="section of options"
-        :key="section.id"
-        :section="section"
-      />
+      <template v-for="section of options">
+        <Section v-for="(subsection, index) of subSections(section)" :key="index" :section="section" :subsection="subsection" />
+      </template>
     </div>
     <TotalAndPayment @saveOrder="saveOrder" ref="totalAndPayment" />
   </div>
@@ -65,6 +63,10 @@ export default defineComponent({
     saveOrder() {
       this.fireModal('saveMyOrder')
     },
+    subSections(section) {
+      const ourList = [...section.options]
+      return [...new Set(ourList.map((item) => item.subsection))]
+    }
   },
   components: {
     RibbonNames,

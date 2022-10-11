@@ -2,7 +2,7 @@
   <div class="mb-4">
     <div class="flex flex-row justify-between">
       <div>
-        <h1 class="capitalize">{{ section.title }}</h1>
+        <h2 class="capitalize">{{ section.title }}</h2>
         <div class="hidden">{{ section.guid }}</div>
       </div>
       <div class="text-xs print:hidden">

@@ -2,7 +2,8 @@
   <div class="formSection">
     <div class="flex flex-row justify-between">
       <div>
-        <h1 class="capitalize">{{ section.title }}</h1>
+        <h2 class="capitalize">{{ section.title }}</h2>
+        <h3 v-if="subsection.length > 0" class="capitalize">{{ subsection }}</h3>
         <div class="hidden">{{ section.guid }}</div>
       </div>
       <div class="text-xs print:hidden">({{ remainingCreditCount }}) credits</div>
@@ -14,7 +15,7 @@
           ? 'bg-yellow-200 text-gray-800 rounded-lg'
           : ''
       "
-      v-for="(item, index2) of section.options"
+      v-for="(item, index2) of filteredList"
       :key="index2"
     >
       <div class="col-span-5">
@@ -68,6 +69,10 @@ export default defineComponent({
       type: Object,
       required: true,
     },
+    subsection: {
+      type: String,
+      default: ''
+    }
   },
   computed: {
     ...mapGetters({
@@ -75,6 +80,13 @@ export default defineComponent({
       credits: 'order/getCredits',
       checkOptions: 'order/checkOptions',
     }),
+    subsections() {
+      const ourList = [...this.section.options]
+      return [...new Set(ourList.map((item) => item.subsection))]
+    },
+    filteredList() {
+      return this.section.options.filter(e => e.subsection === this.subsection || (this.subsection === '' && !e.subsection))
+    },
     creditCount() {
       return this.credits(this.section.guid)
     },
