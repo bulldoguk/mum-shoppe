@@ -12,13 +12,13 @@
     <div class="modal-body">
       <Introduction v-if="panelIndex == 0" />
       <Bundle v-if="panelIndex == 1" />
-      <Section v-if="panelIndex > 1" :sectionIndex="panelIndex" />
+      <Section v-if="panelIndex > 1" :sectionIndex="panelIndex" :panels="panels" />
       <div class="flex flex-row justify-between items-center px-2">
         <a @click="goBack" class="button button-gray"><<</a>
         <a @click="goOn" class="button button-gray">>></a>
       </div>
     </div>
-    <ProgressBar :currentPosition="panelIndex" />
+    <ProgressBar :currentPosition="panelIndex" :targetPosition="panels.length"/>
     <div class="modal-footer">
       <a class="button button-green" @click="saveOrder">Save order</a>
       <a class="button button-gray" @click="resetModal">Close</a>
@@ -43,11 +43,17 @@ export default {
       sectionList: 'options/list',
     }),
     panels() {
-      return [
+      const panelArray = [
         { guid: '', title: 'Introduction', notes: '' },
         { guid: '', title: 'Pick a starting bundle', notes: '' },
-        ...this.sectionList,
       ]
+      for (const section of this.sectionList) {
+        let ourList = [...section.options]
+        for (const subsection of [...new Set(ourList.map((item) => item.subsection))]) {
+          panelArray.push({ guid: section.guid, title: section.title, notes: '', subsection })
+        }
+      }
+      return panelArray
     },
   },
   methods: {
@@ -59,16 +65,10 @@ export default {
       this.fireModal('saveMyOrder')
     },
     goBack() {
-      this.panelIndex--
-      if (this.panelIndex < 0) {
-        this.panelIndex = 0
-      }
+      this.panelIndex = Math.max(0, this.panelIndex - 1)
     },
     goOn() {
-      this.panelIndex++
-      if (this.panelIndex > this.panels.length) {
-        this.panelIndex = this.panels.length
-      }
+      this.panelIndex = Math.min(this.panelIndex + 1, this.panels.length)
     },
   },
   components: { ProgressBar, Introduction, Section, Bundle },

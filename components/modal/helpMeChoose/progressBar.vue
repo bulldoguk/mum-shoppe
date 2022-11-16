@@ -17,6 +17,10 @@ export default defineComponent({
       type: Number,
       default: 0,
     },
+    targetPosition: {
+      type: Number,
+      default: 1
+    }
   },
   data() {
     return {
@@ -33,7 +37,7 @@ export default defineComponent({
       return this.sectionList.length
     },
     targetCount () {
-      return Math.max(this.bundleCount + this.sectionCount, 1)
+      return Math.max(this.bundleCount + this.sectionCount, this.targetPosition, 1)
     },
     progress() {
         try {

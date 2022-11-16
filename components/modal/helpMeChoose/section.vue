@@ -3,9 +3,10 @@
     <div class="flex flex-row justify-between">
       <div>
         <h2 class="capitalize">{{ section.title }}</h2>
+        <h3 v-if="subsectionTitle.length > 0" class="capitalize">{{subsectionTitle}}</h3>
         <div class="hidden">{{ section.guid }}</div>
       </div>
-      <div class="text-xs print:hidden">
+      <div v-if="remainingCreditCount > 0" class="text-xs print:hidden">
         ({{ remainingCreditCount }}) credits
       </div>
     </div>
@@ -16,7 +17,7 @@
           ? 'bg-yellow-200 text-gray-800 rounded-lg'
           : ''
       "
-      v-for="(item, index2) of section.options"
+      v-for="(item, index2) of filteredList"
       :key="index2"
     >
       <div class="col-span-5">
@@ -70,6 +71,10 @@ export default defineComponent({
       type: Number,
       required: true,
     },
+    panels: {
+      type: Array,
+      required: true
+    }
   },
   computed: {
     ...mapGetters({
@@ -84,6 +89,10 @@ export default defineComponent({
     remainingCreditCount() {
       const count = this.credits(this.section.guid) - this.selectedList.length
       return count > 0 ? count : 0
+    },
+    filteredList() {
+      const subsection = this.panels[this.sectionIndex].subsection
+      return this.section.options.filter(e => e.subsection === subsection)
     },
     selectedList() {
       const mylist = [
@@ -107,8 +116,11 @@ export default defineComponent({
       return this.sectionIndex - 2
     },
     section() {
-      return this.sectionList[this.correctedSectionIndex]
+      return this.sectionList.find(e => e.guid === this.panels[this.sectionIndex].guid)
     },
+    subsectionTitle() {
+      return this.panels[this.sectionIndex].subsection || ''
+    }
   },
   methods: {
     ...mapMutations({

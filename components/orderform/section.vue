@@ -6,7 +6,7 @@
         <h3 v-if="subsection.length > 0" class="capitalize">{{ subsection }}</h3>
         <div class="hidden">{{ section.guid }}</div>
       </div>
-      <div class="text-xs print:hidden">({{ remainingCreditCount }}) credits</div>
+      <div v-if="remainingCreditCount>0" class="text-xs print:hidden">({{ remainingCreditCount }}) credits</div>
     </div>
     <div
       class="grid grid-cols-12 mx-4 px-4"
