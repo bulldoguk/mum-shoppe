@@ -1,15 +1,17 @@
 <template>
-  <div class="formSection">
+  <div class="mb-4">
     <div class="flex flex-row justify-between">
       <div>
         <h2 class="capitalize">{{ section.title }}</h2>
-        <h3 v-if="subsection.length > 0" class="capitalize">{{ subsection }}</h3>
+        <h3 v-if="subsectionTitle.length > 0" class="capitalize">{{subsectionTitle}}</h3>
         <div class="hidden">{{ section.guid }}</div>
       </div>
-      <div v-if="remainingCreditCount>0" class="text-xs print:hidden">({{ remainingCreditCount }}) credits</div>
+      <div v-if="remainingCreditCount > 0" class="text-xs print:hidden">
+        ({{ remainingCreditCount }}) credits
+      </div>
     </div>
     <div
-      class="grid grid-cols-12 mx-4 px-4"
+      class="grid grid-cols-12 px-2"
       :class="
         checkDefault(section.guid, item.optionguid)
           ? 'bg-yellow-200 text-gray-800 rounded-lg'
@@ -18,7 +20,7 @@
       v-for="(item, index2) of filteredList"
       :key="index2"
     >
-      <div class="col-span-5">
+      <div class="col-span-4">
         <span
           class="capitalize"
           :class="
@@ -45,7 +47,7 @@
           :showfree="true"
         />
       </div>
-      <div class="col-span-1 flex w-full justify-end">
+      <div class="col-span-2 flex w-full justify-end">
         <UtilsCurrency
           v-if="
             selectedList.length > 0 && index2 === section.options.length - 1
@@ -65,34 +67,32 @@ import { mapGetters, mapMutations } from 'vuex'
 export default defineComponent({
   setup() {},
   props: {
-    section: {
-      type: Object,
+    sectionIndex: {
+      type: Number,
       required: true,
     },
-    subsection: {
-      type: String,
-      default: ''
+    panels: {
+      type: Array,
+      required: true
     }
   },
   computed: {
     ...mapGetters({
+      sectionList: 'options/list',
       checkDefault: 'order/getDefault',
       credits: 'order/getCredits',
       checkOptions: 'order/checkOptions',
     }),
-    subsections() {
-      const ourList = [...this.section.options]
-      return [...new Set(ourList.map((item) => item.subsection))]
-    },
-    filteredList() {
-      return this.section.options.filter(e => e.subsection === this.subsection || (this.subsection === '' && !e.subsection))
-    },
     creditCount() {
       return this.credits(this.section.guid)
     },
     remainingCreditCount() {
       const count = this.credits(this.section.guid) - this.selectedList.length
       return count > 0 ? count : 0
+    },
+    filteredList() {
+      const subsection = this.panels[this.sectionIndex].subsection
+      return this.section.options.filter(e => e.subsection === subsection)
     },
     selectedList() {
       const mylist = [
@@ -112,6 +112,15 @@ export default defineComponent({
       }
       return subtotal
     },
+    correctedSectionIndex() {
+      return this.sectionIndex - 2
+    },
+    section() {
+      return this.sectionList.find(e => e.guid === this.panels[this.sectionIndex].guid)
+    },
+    subsectionTitle() {
+      return this.panels[this.sectionIndex].subsection || ''
+    }
   },
   methods: {
     ...mapMutations({

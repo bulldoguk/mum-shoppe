@@ -6,7 +6,7 @@
     @apply print:mb-1 mb-4 text-4xl print:text-xxs font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white;
   }
   h2 {
-    @apply print:text-xxs font-extrabold dark:text-white;
+    @apply text-3xl print:text-xxs font-extrabold dark:text-white;
   }
   h3 {
     @apply text-2xl print:text-xxs font-bold dark:text-white;
