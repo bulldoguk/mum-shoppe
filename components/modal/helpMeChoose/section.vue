@@ -11,7 +11,7 @@
       </div>
     </div>
     <div
-      class="grid grid-cols-12 mx-4 px-4"
+      class="grid grid-cols-12 px-2"
       :class="
         checkDefault(section.guid, item.optionguid)
           ? 'bg-yellow-200 text-gray-800 rounded-lg'
@@ -20,7 +20,7 @@
       v-for="(item, index2) of filteredList"
       :key="index2"
     >
-      <div class="col-span-5">
+      <div class="col-span-4">
         <span
           class="capitalize"
           :class="
@@ -47,7 +47,7 @@
           :showfree="true"
         />
       </div>
-      <div class="col-span-1 flex w-full justify-end">
+      <div class="col-span-2 flex w-full justify-end">
         <UtilsCurrency
           v-if="
             selectedList.length > 0 && index2 === section.options.length - 1
