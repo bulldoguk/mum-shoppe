@@ -8,10 +8,6 @@ export default function ({ $axios, $config }, inject) {
         }
       }
     })
-
-    api.onRequest(config => {
-      console.log('Making api request to ' + config.url)
-    })
   
     // Set baseURL to something different
     api.setBaseURL($config.apiprotocol + $config.apiurl)
