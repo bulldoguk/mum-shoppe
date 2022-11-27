@@ -28,6 +28,11 @@ jobs:
           cd ~/mum-shoppe
           git config pull.rebase false
           git pull https://${{ secrets.PAT }}:x-oauth-basic@github.com/bulldoguk/mum-shoppe.git master
+          echo "SENDGRIDSENDKEY=${{ SENDGRIDSENDKEY }}" > .env
+          echo "SERVERURL='https://mumshoppe.myhmbiz.com'" >> .env
+          echo "APIKEY=''" >> .env
+          echo "PROTOCOL='https://'" >> .env
+          echo "APIURL='api.myhmbiz.com'" >> .env
           npm ci
           npm run build
           pm2 start
