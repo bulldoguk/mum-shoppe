@@ -28,7 +28,7 @@ jobs:
           cd ~/mum-shoppe
           git config pull.rebase false
           git pull https://${{ secrets.PAT }}:x-oauth-basic@github.com/bulldoguk/mum-shoppe.git master
-          echo "SENDGRIDSENDKEY=${{ SENDGRIDSENDKEY }}" > .env
+          echo "SENDGRIDSENDKEY=${{ secrets.SENDGRIDSENDKEY }}" > .env
           echo "SERVERURL='https://mumshoppe.myhmbiz.com'" >> .env
           echo "APIKEY=''" >> .env
           echo "PROTOCOL='https://'" >> .env
