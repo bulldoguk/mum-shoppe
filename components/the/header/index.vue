@@ -3,10 +3,7 @@
     <nav>
       <div>
         <nuxt-link :to="'/'" class="logo">
-          <img
-            src="~/assets/images/cookoffchampslogo.png"
-            alt="CookOffChamps logo"
-          />
+          <svgOutlineSun />
           <span class="hidden md:block">Mum Shoppe</span>
         </nuxt-link>
         <a class="button button-green" @click="findMyOrder">
@@ -21,7 +18,12 @@
             <svgOutlineQuestionMarkCircle />
           </span>
         </a>
-        <nuxt-link :to="'/admin'"> Admin </nuxt-link>
+        <nuxt-link :to="'/admin'" class="button button-gray">
+          <span class="hidden md:block">Admin</span>
+          <span class="md:hidden">
+            <svgOutlineKey />
+          </span>
+        </nuxt-link>
         <div><TheHeaderTotal /></div>
       </div>
     </nav>

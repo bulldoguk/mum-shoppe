@@ -7,8 +7,8 @@
         @apply flex flex-row items-center justify-between;
         .logo {
           @apply flex items-center;
-          img {
-            @apply mr-3 h-6 sm:h-9;
+          svg {
+            @apply rounded-full bg-white m-2;
           }
           span {
             @apply self-center whitespace-nowrap text-xl font-semibold dark:text-white;
