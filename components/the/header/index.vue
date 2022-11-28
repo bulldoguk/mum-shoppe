@@ -7,10 +7,20 @@
             src="~/assets/images/cookoffchampslogo.png"
             alt="CookOffChamps logo"
           />
-          <span>Mum Shoppe</span>
+          <span class="hidden md:block">Mum Shoppe</span>
         </nuxt-link>
-        <a class="button button-green" @click="findMyOrder">Find My Order</a>
-        <a class="button button-yellow" @click="helpMeChoose">Help me Choose</a>
+        <a class="button button-green" @click="findMyOrder">
+          <span class="hidden md:block">Find My Order</span>
+          <span class="md:hidden">
+            <svgOutlineSearch />
+          </span>
+        </a>
+        <a class="button button-yellow" @click="helpMeChoose">
+          <span class="hidden md:block">Help me Choose</span>
+          <span class="md:hidden">
+            <svgOutlineQuestionMarkCircle />
+          </span>
+        </a>
         <nuxt-link :to="'/admin'"> Admin </nuxt-link>
         <div><TheHeaderTotal /></div>
       </div>
